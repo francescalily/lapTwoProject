@@ -1,9 +1,14 @@
 const gridItems = document.querySelectorAll(".grid-item");
 const gridContainer = document.querySelector(".grid-container");
+const library = document.querySelector("#library");
+const ideas = document.querySelector("#ideas");
+const recycling = document.querySelector("#recycling");
+const knowledge = document.querySelector("#knowledge");
+const landscape = document.querySelector("#landscape");
 
 let isOpen = false;
 
-function togglePopUp() {
+function togglePopUp(event) {
   if (isOpen) {
     const fullScreen = gridContainer.querySelector(".fullScreen");
     if (fullScreen) {
@@ -16,6 +21,14 @@ function togglePopUp() {
   } else {
     const fullScreen = document.createElement("div");
     fullScreen.classList.add("fullScreen");
+
+    const sourceElement = event.target;
+    const clonedContent = sourceElement.cloneNode(true);
+    fullScreen.appendChild(clonedContent);
+
+    if (event.target.id === "library") {
+      fullScreen.style.backgroundColor = "blue";
+    }
 
     fullScreen.addEventListener("click", togglePopUp);
 
