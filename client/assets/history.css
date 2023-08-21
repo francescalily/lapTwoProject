@@ -1,0 +1,36 @@
+.svg-container {
+    height: 500px;
+    width: 700px;
+}
+
+#svg3 {
+    transition: transform 0.2s ease-in-out;
+        cursor:pointer;
+
+}
+#svg3:hover {
+    transform: scale(1.02) translateY(-15px) translateX(-15px)
+}
+
+
+#svg2 {
+    transition: transform 0.2s ease-in-out;
+    cursor:pointer;
+
+}
+#svg2:hover {
+    transform: scale(1.02) translateY(5px) translateX(10px)
+}
+
+#svg1 {
+    stroke: rgb(0, 2, 128);
+    transition: transform 0.2s ease-in-out;
+    cursor:pointer;
+}
+
+#svg1:hover {
+    transform-origin: left-center;
+    transform: scale(1.02) translateY(5px) translateX(-10px)
+}
+
+
