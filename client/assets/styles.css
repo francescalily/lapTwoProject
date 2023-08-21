@@ -1,0 +1,55 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+#svg-section {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: #67a9b3;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.svg-container {
+    position: fixed;
+    transition: transform 0.3s, top ease 0.5s;
+    transition: margin-left 0.3s;
+}
+
+.drawer--hidden {
+    right: -60vw;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.new{
+    fill: red;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transition:.3s;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition:.3s;
+    transform-box: fill-box;
+    align-self: center;
+    transition: ease 0.3s;
+}
+
+.new:hover{
+    fill: aqua;
+    -webkit-transform: scale(1.5);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transition:.3s;
+    transform: scale(1.5);
+    transform-origin: 50% 50%;
+    transition:.3s;
+    
+    cursor:pointer;
+}
