@@ -1,3 +1,4 @@
+
 let svg = document.querySelector(".svg-container");
 let pathGroup = svg.querySelector(".path-group");
 let paths = Array.from(pathGroup.querySelectorAll("path"));
@@ -10,6 +11,9 @@ let drawerContent = document.querySelectorAll(".drawer-content");
 let content_svg1 = document.querySelector("#content-svg1");
 let content_svg2 = document.querySelector("#content-svg2");
 let content_svg3 = document.querySelector("#content-svg3");
+
+
+
 
 function bringToFront(path) {
     pathGroup.removeChild(path);
@@ -137,4 +141,5 @@ window.addEventListener("resize", function () {
         closeDrawer();
         openDrawer(activeSVG);
     }
-});
+})
+
