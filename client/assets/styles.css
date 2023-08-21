@@ -18,16 +18,17 @@ body, html {
 }
 
 .svg-container {
-    position: fixed;
+    position: relative;
     transition: transform 0.3s, top ease 0.5s;
     transition: margin-left 0.3s;
+    width: 1100px;
+    height: 1100px;
 }
 
-.drawer--hidden {
-    right: -60vw;
-    opacity: 0;
-    pointer-events: none;
+.svg-container.left {
+    margin-left: -20%;
 }
+
 
 .new{
     fill: red;
@@ -52,4 +53,35 @@ body, html {
     transition:.3s;
     
     cursor:pointer;
+}
+
+.drawer-right {
+    right: -60vw;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.drawer-right {
+    background-color: #ddffd9;
+    right: -60vw;
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s cubic-bezier(.97, .1, .18, .99), opacity 0.3s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drawer-right--close {
+    /* Existing properties */
+    transition: right 0.3s cubic-bezier(.97, .1, .18, .99), opacity 0.3s;
+}
+
+.open {
+    opacity: 1;
+    right: 0;
+    pointer-events: auto;
 }
