@@ -4,7 +4,7 @@ const library = document.querySelector("#library");
 const ideas = document.querySelector("#ideas");
 const recycling = document.querySelector("#recycling");
 const knowledge = document.querySelector("#knowledge");
-const landscape = document.querySelector("#landscape");
+const history = document.querySelector("#history");
 
 let isOpen = false;
 
@@ -28,6 +28,22 @@ function togglePopUp(event) {
 
     if (event.target.id === "library") {
       fullScreen.style.backgroundColor = "blue";
+    }
+
+    if (event.target.id === "recycling") {
+      fullScreen.style.backgroundColor = "orange";
+    }
+
+    if (event.target.id === "knowledge") {
+      fullScreen.style.backgroundColor = "yellow";
+    }
+
+    if (event.target.id === "history") {
+      fullScreen.style.backgroundColor = "green";
+    }
+
+    if (event.target.id === "ideas") {
+      fullScreen.style.backgroundColor = "red";
     }
 
     fullScreen.addEventListener("click", togglePopUp);
