@@ -9,8 +9,7 @@
 
 }
 #svg3:hover {
-    transform: scale(1.02) translateY(-10px);
- 
+    transform: scale(1.02) translateY(-15px) translateX(-15px)
 }
 
 
