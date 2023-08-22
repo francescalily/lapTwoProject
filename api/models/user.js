@@ -1,11 +1,11 @@
 const db = require('../database/connect');
 
 class User {
-    constructor({user_id, username, password, isAdmin}) {
+    constructor({user_id, username, password, isadmin}) {
         this.id = user_id,
         this.username = username,
         this.password = password,
-        this.isAdmin = isAdmin
+        this.isAdmin = isadmin
     }
 
     static async getById(id) {
