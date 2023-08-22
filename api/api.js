@@ -3,12 +3,14 @@ const cors = require('cors');
 require("dotenv").config();
 
 const bookRouter = require('./routers/books');
-const logger = require('./middleware/logger')
+const logRoutes = require('./middleware/logger');
+const authenticator = require('./middleware/authenticator');
+const userRouter = require('./routers/user');
+
 const api = express();
 
 api.use(cors());
 api.use(express.json());
-api.use(logger);
 
 
 api.get("/", (req, res) => {
@@ -20,5 +22,12 @@ api.get("/", (req, res) => {
 })
 api.use("/books", bookRouter)
 
+api.use(logRoutes);
+
+api.use("/users", userRouter);
+api.get("/test", authenticator, (req, res) => {
+    console.log(req.user)
+    res.status(200).send("It works!")
+})
 
 module.exports = api;

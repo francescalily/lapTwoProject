@@ -1,9 +1,20 @@
 const fs = require('fs');
-require("dotenv").config();
+require('dotenv').config();
 
-const db = require("./connect")
+const db = require('./connect');
+
 const sql = fs.readFileSync("./database/setup.sql").toString();
 
 db.query(sql)
-    .then(data => console.log("Set-up complete."))
-    .catch(error => console.log(error));
+.then(data => {
+    db.end();
+    console.log("setup complete");
+})
+.catch(err => console.log(err));
+
+db.query(sql)
+.then(data => {
+    db.end();
+    console.log("setup complete");
+})
+.catch(err => console.log(err));
