@@ -13,6 +13,7 @@ api.use(logRoutes);
 
 api.use("/users", userRouter);
 api.get("/test", authenticator, (req, res) => {
+    console.log(req.user)
     res.status(200).send("It works!")
 })
 

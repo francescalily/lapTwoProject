@@ -32,7 +32,11 @@ async function login (req, res) {
             throw new Error("Incorrect credentials.");
         } else {
             const newToken = jwt.sign(
-                { user_id: user.id },
+                { 
+                    id: user.id,
+                    username: user.username,
+                    isAdmin: user.isAdmin
+                },
                 process.env.TOKEN_KEY,
                 { expiresIn: "1h", }
             );
