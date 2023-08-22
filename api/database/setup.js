@@ -11,3 +11,10 @@ db.query(sql)
     console.log("setup complete");
 })
 .catch(err => console.log(err));
+
+db.query(sql)
+.then(data => {
+    db.end();
+    console.log("setup complete");
+})
+.catch(err => console.log(err));
