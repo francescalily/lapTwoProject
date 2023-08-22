@@ -22,6 +22,22 @@ html, body {
     box-sizing: border-box;
 }
 
+.login-container .register {
+    display: none;
+}
+
+#check:checked ~ .register {
+    display: block;
+}
+
+#check:checked ~ .login {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
 .login-container .form {
     padding: 2rem;
 }
