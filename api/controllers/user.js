@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
-const User = require('../models/user');
+const User = require('../models/User');
 
 async function register (req, res) {
     try {
@@ -25,7 +25,7 @@ async function register (req, res) {
 async function login (req, res) {
     const data = req.body;
     try {
-        const user = await User.getByUsername(data.username);
+        const user = await User.getByEmail(data.email);
         const authenticated = await bcrypt.compare(data.password, user["password"]);
 
         if (!authenticated) {
