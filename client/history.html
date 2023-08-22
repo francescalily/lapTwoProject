@@ -8,13 +8,13 @@
     
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <link rel="stylesheet" type="text/css" href="assets/history.css">
-     <script defer type="text/javascript" src="assets/history.js"></script> 
 
 </head>
 <body>
     <section>
     <h1>Explore Florin County</h1>
 </section>
+<section class="svg-background">
     <section id="svg-section">
         <svg viewBox="0 0 800 800" class="svg-container">
             <g class="path-group">
@@ -44,21 +44,39 @@
             </g>
         </svg>
     </section>
+  </section>
     <section class="drawer-right">
         <div class="drawer-content hidden" id="content-svg1">
             <h2>Redania District</h2>
             <p>Considered the capital of Florin County, this is where the finance bros work hard but also where they play even harder. </p>
        
-        <div>IMAGE TAGS OF MONUMENTS HERE</div>
-        <p>THREE IMGS/MODELS - A SKYSCRAPER, STATUE AND A SCULPTURE</p>
-        <button>scroll buttons</button>
+            <div class="image-section">
+              <button class="arrow left-arrow">←</button>
+              <img id="image" src="/client/assets/download.jpeg" alt="Image">
+              <button class="arrow right-arrow">→</button>
+            </div>
+        <p id="image-description">This place is fukkkkin magical</p>
       </div>
         <div class="drawer-content hidden" id="content-svg2">
             <h2>The history of Cintra</h2>
+            <div class="image-section">
+              <button class="arrow left-arrow">←</button>
+              <img id="image" src="/client/assets/download.jpeg" alt="Image">
+              <button class="arrow right-arrow">→</button>
+            </div>
+        <p id="image-description">This place is fukkkkin magical</p>
         </div>
         <div class="drawer-content hidden" id="content-svg3">
             <h2>The history of Nilfgaard</h2>
+            <div class="image-section">
+              <button class="arrow left-arrow">←</button>
+              <img id="image" src="/client/assets/download.jpeg" alt="Image">
+              <button class="arrow right-arrow">→</button>
+            </div>
+        <p id="image-description">This place is fukkkkin magical</p>
         </div>
     </section>
+    <script defer type="text/javascript" src="assets/history.js"></script> 
+
 </body>
 </html>

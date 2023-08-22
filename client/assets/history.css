@@ -1,5 +1,6 @@
 
 .svg-container {
+    position: relative;
     height: 500px;
     width: 700px;
 }
@@ -24,7 +25,6 @@
 }
 
 #svg1 {
-    stroke: rgb(0, 2, 128);
     transition: transform 0.2s ease-in-out;
     cursor:pointer;
 }
@@ -65,6 +65,8 @@ h1 {
 }
 
 
+
+
 .new{
     -webkit-transform: scale(1);
     -webkit-transition:.3s;
@@ -72,8 +74,6 @@ h1 {
     transition:.3s;
     align-self: center;
     transition: ease 0.3s;
-    stroke: black;
-    stroke-width: 10px;
 }
 
 .new:hover{
@@ -128,3 +128,33 @@ h1 {
 .drawer-content {
     margin-left: 20px;
 }
+image-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .left-arrow {
+    margin-right: 16px;
+  }
+  
+  .right-arrow {
+    margin-left: 16px;
+  }
+
+  /* .enlarge {
+    width: 80%; /* Increase the width to enlarge */
+    /* position: absolute;
+    left: 0;
+    top: 0; /* Adjust as needed */
+    /* transition: width 0.5s ease;
+  } */

@@ -30,8 +30,8 @@ function restoreOrder(path) {
 
 paths.forEach(function (item) {
     var pathLength = item.getTotalLength();
-    item.setAttribute("stroke-dasharray", pathLength);
-    item.setAttribute("stroke-dashoffset", pathLength);
+    // item.setAttribute("stroke-dasharray", pathLength);
+    // item.setAttribute("stroke-dashoffset", pathLength);
     item.classList.toggle("new");
 
     item.addEventListener("mouseover", function () {
@@ -41,6 +41,10 @@ paths.forEach(function (item) {
     item.addEventListener("mouseout", function () {
         restoreOrder(item);
     });
+
+    item.addEventListener("click", function() {
+item.classList.add()
+    })
 });
 
 
@@ -50,15 +54,19 @@ svg1.addEventListener("click", function () {
         setTimeout(() => { openDrawer(svg1); }, 200);
         activeSVG = svg1;
         svg.classList.add("left");
+      
+       
     } else {
         if (drawer.classList.contains("open")) {
             closeDrawer();
             svg.classList.remove("left");
             activeSVG = null;
         } else {
+            
             openDrawer(svg1);
             svg.classList.add("left");
             activeSVG = svg1;
+
         }
     }
 });
@@ -143,3 +151,40 @@ window.addEventListener("resize", function () {
     }
 })
 
+
+const description = document.getElementById("image-description")
+const image = document.getElementById("image");
+const leftArrow = document.querySelector(".left-arrow");
+const rightArrow = document.querySelector(".right-arrow");
+
+
+const images = ["./assets/download.jpeg", "image2.jpg", "image3.jpg"]; // Replace with your image URLs
+const descriptions = [
+    
+        "This place is fukkkkin magical",
+        "May the lord bless this place",
+        "Damn ok bro we get it"
+    
+]
+let currentIndex = 0;
+
+function updateDescription() {
+    description.textContent = descriptions[currentIndex]
+}
+function updateImage() {
+  image.src = images[currentIndex];
+}
+
+leftArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateImage();
+  updateDescription();
+});
+
+rightArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateImage();
+  updateDescription();
+});
+
+updateImage(); // Initialize with the first image
