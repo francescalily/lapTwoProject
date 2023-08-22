@@ -1,5 +1,6 @@
-/*
+
 .svg-container {
+    position: relative;
     height: 500px;
     width: 700px;
 }
@@ -10,7 +11,7 @@
 
 }
 #svg3:hover {
-    transform: scale(1.02) translateY(-15px) translateX(-15px)
+    transform: scale(1.12) translateY(-35px) translateX(-45px)
 }
 
 
@@ -20,27 +21,31 @@
 
 }
 #svg2:hover {
-    transform: scale(1.02) translateY(5px) translateX(10px)
+    transform: scale(1.12) translateY(3px) translateX(20px)
 }
 
 #svg1 {
-    stroke: rgb(0, 2, 128);
     transition: transform 0.2s ease-in-out;
     cursor:pointer;
 }
 
 #svg1:hover {
     transform-origin: left-center;
-    transform: scale(1.02) translateY(5px) translateX(-10px)
+    transform: scale(1.12) translateY(10px) translateX(-40px)
 }
-*/
 
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+
+}
 
 #svg-section {
     position: absolute;
     justify-content: center;
     align-items: center;
-    background: #67a9b3;
+    transform: translate(660px, 50px);
     width: 100%;
     height: 100%;
     top: 0;
@@ -48,7 +53,7 @@
 }
 
 .svg-container {
-    position: relative;
+    /* position: relative; */
     transition: transform 0.3s, top ease 0.5s;
     transition: margin-left 0.3s;
     width: 700px;
@@ -60,27 +65,23 @@
 }
 
 
+
+
 .new{
     -webkit-transform: scale(1);
-    -webkit-transform-origin: 50% 50%;
     -webkit-transition:.3s;
     transform: scale(1);
-    transform-origin: 50% 50%;
     transition:.3s;
-    transform-box: fill-box;
     align-self: center;
     transition: ease 0.3s;
-    stroke: black;
-    stroke-width: 10px;
 }
 
 .new:hover{
     fill: aqua;
     -webkit-transform: scale(1.5);
-    -webkit-transform-origin: 50% 50%;
+  
     -webkit-transition:.3s;
     transform: scale(1.5);
-    transform-origin: 50% 50%;
     transition:.3s;
     
     cursor:pointer;
@@ -94,10 +95,11 @@
 }
 
 .drawer-right {
+    border-radius: 5px;
     background-color: #ddffd9;
     right: -60vw;
     width: 60vw;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     opacity: 0;
     pointer-events: none;
@@ -122,3 +124,37 @@
     opacity: 0;
     display: none;
 }
+
+.drawer-content {
+    margin-left: 20px;
+}
+image-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .left-arrow {
+    margin-right: 16px;
+  }
+  
+  .right-arrow {
+    margin-left: 16px;
+  }
+
+  /* .enlarge {
+    width: 80%; /* Increase the width to enlarge */
+    /* position: absolute;
+    left: 0;
+    top: 0; /* Adjust as needed */
+    /* transition: width 0.5s ease;
+  } */
