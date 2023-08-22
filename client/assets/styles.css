@@ -115,8 +115,17 @@ body, h1, p {
 
 .profile-circle {
     border: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 50%;
     width: 20vh;
     height: 20vh;
+    vertical-align: middle;
+    
+}
+
+.profile-circle > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
