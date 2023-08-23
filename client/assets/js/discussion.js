@@ -60,6 +60,75 @@ gridItems.forEach((item) => {
   item.addEventListener("click", togglePopUp);
 });
 
+function createPostElement(data) {
+  const post = document.createElement("div");
+  post.className = "post";
+
+  const header = document.createElement("h2");
+  header.textContent = data["topic"];
+  post.appendChild(header);
+
+  const content = document.createElement("p");
+  content.textContent = data["post"];
+  post.appendChild(content);
+
+  return post;
+}
+
+document.getElementById("post-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = new FormData(e.target);
+
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      topic: form.get("topic"),
+      post: form.get("post"),
+    }),
+  };
+
+  const result = await fetch("http://localhost:3000/community", options);
+
+  if ((result.status = 201)) {
+    window.location.reload();
+  }
+});
+
+//Code to get the username and check whether authorised - may not need this but for functionality and code flow keep for now
+async function loadPosts() {
+  const options = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  };
+
+  const response = await fetch("http://localhost:3000/community", options);
+
+  if (response.status == 200) {
+    const posts = await response.json();
+
+    const container = document.getElementById("posts"); //CHANGE to new div created after checking the function works - if this appends the div container with the id=posts, change to the cloned node of the div container that pops up when clicking on section
+
+    posts.forEach((p) => {
+      const elem = createPostElement(p);
+      container.appendChild(elem);
+    });
+  } else {
+    window.location.assign("./discussion.html");
+  }
+}
+
+loadPosts();
+
+//need to add username - join sql table with valentin user_account table so that username appears with post
+//need to display posts (front-end)- right now can see the posts as soon as pressing post - need to make a toggle so is hidden until button is pressed
+//(backend) need to make sure that data is stored correctly and is secure
+
 // function fullScreen() {
 //   let fullScreenBox = document.createElement("div");
 //   fullScreenBox.classList.add("fullScreenBox");
