@@ -53,7 +53,7 @@ function openHistory() {
   divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
   divBox.style.overflow = "scroll";
 
-  allPosts.forEach((postElem) => {
+  allPosts.forEacdch((postElem) => {
     if (postElem.getAttribute("data-topic") === "history") {
       divBox.appendChild(postElem.cloneNode(true));
     }
