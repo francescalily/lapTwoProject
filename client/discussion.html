@@ -40,7 +40,12 @@
       </fieldset> -->
       <fieldset>
         <label for="title">Topic:</label>
-        <input type="text" id="topic" name="topic" required>
+        <select id="topic" name="topic">
+        <option value="library">Library</option>
+      <option value="crafts">Crafts</option>
+      <option value="recycling">Recycling</option>
+      <option value="history">History</option>
+    </select>
       </fieldset>
       <fieldset>
         <label for="title">Post:</label>
@@ -65,9 +70,9 @@
       <button id="historyBtn">History</button>
       <div class="history-posts"></div>
      </div>
-     <!-- <div class="grid-item"></div> -->
+   
      </div>
-     <div id="posts"></div>
+     <div id="posts" style="display: none;"></div>
 
      
 </html>
