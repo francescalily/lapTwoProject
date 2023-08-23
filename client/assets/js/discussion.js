@@ -1,3 +1,5 @@
+// Back up code incase mess up whole flow of page -
+
 const gridItems = document.querySelectorAll(".grid-item");
 const gridContainer = document.querySelector(".grid-container");
 const library = document.querySelector("#library");
@@ -8,9 +10,29 @@ const history = document.querySelector("#history");
 
 let isOpen = false;
 
+function createPostElement(data) {
+  const post = document.createElement("div");
+  post.className = "post";
+
+  const header = document.createElement("h2");
+  header.textContent = data["topic"];
+  post.appendChild(header);
+
+  const content = document.createElement("p");
+  content.textContent = data["post"];
+  post.appendChild(content);
+
+  return post;
+}
+
 function togglePopUp(event) {
+  if (event.target.closest("#post-form")) {
+    return; // If so, exit the function early to allow the form to function normally.
+  }
   if (isOpen) {
     const fullScreen = gridContainer.querySelector(".fullScreen");
+    const formClone = document.getElementById("post-form").cloneNode(true); //take out when functionality to keep the data works - need to change display to show also
+    fullScreen.appendChild(formClone);
     if (fullScreen) {
       gridContainer.removeChild(fullScreen);
       gridItems.forEach((item) => {
@@ -44,7 +66,18 @@ function togglePopUp(event) {
 
     if (event.target.id === "ideas") {
       fullScreen.style.backgroundColor = "red";
+      item.style.display = "none";
     }
+
+    // if (
+    //   event.target.id === "post-form" ||
+    //   event.target.id === "post" ||
+    //   event.target.id === "topic"
+    // ) {
+    //   fullScreen.style.backgroundColor = "red";
+    //   item.style.display = "none";
+    //   isOpen = false;
+    // }
 
     fullScreen.addEventListener("click", togglePopUp);
 
@@ -59,21 +92,6 @@ function togglePopUp(event) {
 gridItems.forEach((item) => {
   item.addEventListener("click", togglePopUp);
 });
-
-function createPostElement(data) {
-  const post = document.createElement("div");
-  post.className = "post";
-
-  const header = document.createElement("h2");
-  header.textContent = data["topic"];
-  post.appendChild(header);
-
-  const content = document.createElement("p");
-  content.textContent = data["post"];
-  post.appendChild(content);
-
-  return post;
-}
 
 document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
