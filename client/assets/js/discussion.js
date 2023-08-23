@@ -8,9 +8,33 @@ const history = document.querySelector("#history");
 
 let isOpen = false;
 
+function createPostElement(data) {
+  const post = document.createElement("div");
+  post.className = "post";
+
+  const username = document.createElement("h3");
+  username.textContent = data["username"];
+  post.appendChild(username);
+
+  const header = document.createElement("h2");
+  header.textContent = data["topic"];
+  post.appendChild(header);
+
+  const content = document.createElement("p");
+  content.textContent = data["post"];
+  post.appendChild(content);
+
+  return post;
+}
+
 function togglePopUp(event) {
+  if (event.target.closest("#post-form")) {
+    return;
+  }
   if (isOpen) {
     const fullScreen = gridContainer.querySelector(".fullScreen");
+    const formClone = document.getElementById("post-form").cloneNode(true);
+    fullScreen.appendChild(formClone);
     if (fullScreen) {
       gridContainer.removeChild(fullScreen);
       gridItems.forEach((item) => {
@@ -44,6 +68,7 @@ function togglePopUp(event) {
 
     if (event.target.id === "ideas") {
       fullScreen.style.backgroundColor = "red";
+      item.style.display = "none";
     }
 
     fullScreen.addEventListener("click", togglePopUp);
@@ -59,6 +84,74 @@ function togglePopUp(event) {
 gridItems.forEach((item) => {
   item.addEventListener("click", togglePopUp);
 });
+
+document.getElementById("post-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = new FormData(e.target);
+  const username = form.get("username");
+  const topic = form.get("topic");
+  const postContent = form.get("post");
+
+  const postData = {
+    username: username,
+    topic: topic,
+    post: postContent,
+  };
+
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  };
+
+  const result = await fetch("http://localhost:3000/community", options);
+  const responseData = await result.json();
+  console.log(responseData);
+
+  if ((result.status = 201)) {
+    const container = document.getElementById("posts");
+    const newPostElem = createPostElement(responseData);
+    container.appendChild(newPostElem);
+
+    e.target.reset();
+    window.location.reload();
+  } else {
+    console.error("Failed to post the data.");
+  }
+});
+
+async function loadPosts() {
+  const options = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  };
+
+  const response = await fetch("http://localhost:3000/community", options);
+
+  if (response.status == 200) {
+    const posts = await response.json();
+
+    const container = document.getElementById("posts");
+
+    posts.forEach((p) => {
+      const elem = createPostElement(p);
+      container.appendChild(elem);
+    });
+  } else {
+    window.location.assign("./discussion.html");
+  }
+}
+
+loadPosts();
+
+//need to add username - join sql table with valentin user_account table so that username appears with post
+//need to display posts (front-end)- right now can see the posts as soon as pressing post - need to make a toggle so is hidden until button is pressed
+//(backend) need to make sure that data is stored correctly and is secure
 
 // function fullScreen() {
 //   let fullScreenBox = document.createElement("div");
