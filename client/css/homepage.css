@@ -1,13 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap');
+
 .cover-container {
-    padding: 2rem;
+    padding-top: 100px;
+    max-height: 100%;
     z-index: 2;
+    
+}
+
+.welcome {
+    border: 1px;
+    width: 60%;
+    padding: 20px;
+    background-color: aqua;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+   
 }
 
 .slider-wrapper {
-    position: relative;
-    max-width: 100%;
+    display: flex;
+    position: absolute;
+    max-width: 80%;
     margin: 0 auto;
+    /* justify-content: center; */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
     
+
 }
 
 .slider {
@@ -16,9 +37,12 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25); */
     height: 500px;
+    /* border-radius: 15px; */
     z-index: 1;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .slider::-webkit-scrollbar {
@@ -39,4 +63,167 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+}
+
+/* .news-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    column-gap: 1rem;
+} */
+
+.site-container {
+    background-color: grey;
+    padding: 10px;
+    margin: 600px 90px 90px 90px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.news-container {
+    display: flex;
+    background-color: red;
+    margin: 10px;
+    padding: 20px;
+    height: 530px;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.news-box {
+    flex: 1;
+    border-style: solid;
+    box-sizing: border-box;
+    /* height: 200px; */
+    aspect-ratio: 1/1;
+    padding: 10px;
+    background-color: #e1d9cf;
+}
+
+.news-img {
+    width: 100%;
+    height: auto;
+}
+
+.news-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.news-text {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.news-text span {
+    color: rgba(249, 116, 75, 1);
+    font-size: 1rem;
+}
+.news-text .news-title {
+    color: #102937;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.news-text .news-title:hover {
+    color: rgba(249, 116, 75, 1);
+    transition: all ease 0.3s;
+}
+
+.news-text p{
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0px;
+}
+
+.news-text a{
+    color: #102937;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.news-text a:hover{
+    color: rgba(249, 116, 75, 1);
+    transition: all ease 0.3s;
+}
+
+.pages-container {
+    display: flex;
+    background-color: blueviolet;
+    margin: 20px 10px 10px 10px;
+    padding: 20px;
+    height: 500px;
+    justify-content: space-evenly;
+    column-gap: 20px;
+}
+.pages-box {
+    /* display: flex; */
+    flex: 1;
+    border-style: solid;
+    box-sizing: border-box;
+    aspect-ratio: 1/1;
+    /* padding: 10px; */
+    background-color: #e1d9cf;
+    overflow: hidden;
+    height: auto;
+    /* flex-wrap: nowrap; */
+    width: 450px;
+    position: relative;
+}
+
+.pages-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+.pages-img img{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-image.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.overlay {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+    transition: ease 0.3s;
+}
+
+.overlay h2 {
+    display: flex;
+    margin: 0;
+    padding-top: 10px;
+    opacity: 1;
+    color: white;
+    transition: ease 0.3s;
+}
+
+.pages-box:hover .overlay{
+    height: 100%;
+}
+.pages-box:hover .overlay h2 {
+    letter-spacing: 0.3rem;
+    font-size: 2rem;
 }
