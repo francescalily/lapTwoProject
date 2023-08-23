@@ -25,4 +25,3 @@ document.querySelector('#login-form').addEventListener("submit", async e => {
         alert(data.error);
     }
 })
-
