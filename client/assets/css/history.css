@@ -1,7 +1,7 @@
 
 .svg-container {
     position: relative;
-    height: 500px;
+    height: 650px;
     width: 700px;
 }
 
@@ -60,16 +60,11 @@ h1 {
     height: 500px;
 }
 
-.svg-container.left {
-    margin-left: -10%;
-    transform: scale(1.6)
-    transition ease 0.4s;
-    transform: translate(300px, 50px);
-    color:aqua;
-
+.left {
+    margin-left: -30%;
+    height: 800px;
+    margin-bottom: 20px;
 }
-
-
 
 
 .new{
@@ -156,10 +151,4 @@ image-section {
     margin-left: 16px;
   }
 
-  /* .enlarge {
-    width: 80%; /* Increase the width to enlarge */
-    /* position: absolute;
-    left: 0;
-    top: 0; /* Adjust as needed */
-    /* transition: width 0.5s ease;
-  } */
+   
