@@ -8,6 +8,6 @@ const sql = fs.readFileSync("./database/setup.sql").toString();
 db.query(sql)
 .then(data => {
     db.end();
-    console.log("setup complete");
+    console.log("Setup complete");
 })
 .catch(err => console.log(err));
