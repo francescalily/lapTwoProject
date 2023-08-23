@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS user_account;
 DROP TABLE IF EXISTS community;
 
-
 CREATE TABLE book (
     book_id INT GENERATED ALWAYS AS IDENTITY,
     book_name VARCHAR(70) UNIQUE NOT NULL,
@@ -19,7 +18,6 @@ VALUES
     ('All Things Lit', 'Hot topic discussions within Literature that have developed from the Beautiful City of Florin.',  0),
     ('Shine n Dine', 'From its mediteranean dish pattern, to its South Asian dessert style - Florin has a rich history of foods... and its not by chance.' , 0);
  
-
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(30) UNIQUE NOT NULL,
@@ -42,3 +40,4 @@ INSERT INTO community
 VALUES
 ('Franki', 'History', 'I love how the git commited team are working on the history of Florin!', 0),
 ('Hasan', 'Ideas', 'I think this website is the best website I have ever been on:---)', 0);
+
