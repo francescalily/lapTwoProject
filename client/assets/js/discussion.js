@@ -1,5 +1,3 @@
-// Back up code incase mess up whole flow of page -
-
 const gridItems = document.querySelectorAll(".grid-item");
 const gridContainer = document.querySelector(".grid-container");
 const library = document.querySelector("#library");
@@ -14,6 +12,10 @@ function createPostElement(data) {
   const post = document.createElement("div");
   post.className = "post";
 
+  const username = document.createElement("h3");
+  username.textContent = data["username"];
+  post.appendChild(username);
+
   const header = document.createElement("h2");
   header.textContent = data["topic"];
   post.appendChild(header);
@@ -27,11 +29,11 @@ function createPostElement(data) {
 
 function togglePopUp(event) {
   if (event.target.closest("#post-form")) {
-    return; // If so, exit the function early to allow the form to function normally.
+    return;
   }
   if (isOpen) {
     const fullScreen = gridContainer.querySelector(".fullScreen");
-    const formClone = document.getElementById("post-form").cloneNode(true); //take out when functionality to keep the data works - need to change display to show also
+    const formClone = document.getElementById("post-form").cloneNode(true);
     fullScreen.appendChild(formClone);
     if (fullScreen) {
       gridContainer.removeChild(fullScreen);
@@ -69,16 +71,6 @@ function togglePopUp(event) {
       item.style.display = "none";
     }
 
-    // if (
-    //   event.target.id === "post-form" ||
-    //   event.target.id === "post" ||
-    //   event.target.id === "topic"
-    // ) {
-    //   fullScreen.style.backgroundColor = "red";
-    //   item.style.display = "none";
-    //   isOpen = false;
-    // }
-
     fullScreen.addEventListener("click", togglePopUp);
 
     gridItems.forEach((item) => {
@@ -97,10 +89,12 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
+  const username = form.get("username");
   const topic = form.get("topic");
   const postContent = form.get("post");
 
   const postData = {
+    username: username,
     topic: topic,
     post: postContent,
   };
@@ -116,21 +110,20 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 
   const result = await fetch("http://localhost:3000/community", options);
   const responseData = await result.json();
+  console.log(responseData);
 
   if ((result.status = 201)) {
     const container = document.getElementById("posts");
     const newPostElem = createPostElement(responseData);
     container.appendChild(newPostElem);
 
-    // Optional: Clear the form fields after successfully posting
     e.target.reset();
+    window.location.reload();
   } else {
-    // Handle error case as necessary
     console.error("Failed to post the data.");
   }
 });
 
-//Code to get the username and check whether authorised - may not need this but for functionality and code flow keep for now
 async function loadPosts() {
   const options = {
     headers: {
@@ -143,7 +136,7 @@ async function loadPosts() {
   if (response.status == 200) {
     const posts = await response.json();
 
-    const container = document.getElementById("posts"); //CHANGE to new div created after checking the function works - if this appends the div container with the id=posts, change to the cloned node of the div container that pops up when clicking on section
+    const container = document.getElementById("posts");
 
     posts.forEach((p) => {
       const elem = createPostElement(p);
