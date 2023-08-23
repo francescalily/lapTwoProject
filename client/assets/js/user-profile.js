@@ -6,7 +6,7 @@ let mediaContent = document.querySelector(".media-icons");
 let postBoxes = document.querySelectorAll(".post-boxes");
 let mainContent = document.querySelector(".main-content");
 let postLabels = document.querySelectorAll(".post-label");
-let container = document.querySelectorAll(".container");
+let container = document.querySelector(".container");
 let removedContent = null;
 
 expandSection.addEventListener("mouseover", function () {
@@ -17,43 +17,6 @@ expandSection.addEventListener("mouseleave", function () {
     arrowButton.classList.remove("hovered");
 })
 
-/*
-expandSection.addEventListener("click", function () {
-
-    if (!removedContent) {
-        // Add the "flip-out" class to initiate the flip animation
-        rightContent.classList.add("flip-out");
-
-        // After the animation completes, remove the element and store it
-        rightContent.addEventListener("animationend", function () {
-            removedContent = rightContent.cloneNode(true); // Clone the content
-            rightContent.remove();
-
-            mainContent.style.height = "1500px";
-            postLabels[0].classList.add("onExpand-postLabel");
-            postBoxes[0].classList.add("onExpand-boxes");
-            postBoxes[1].classList.add("onExpand-boxes");
-            expandSection.classList.add("onExpand-expandSection");
-            arrowButton.classList.add("onExpand-arrow");
-        }, { once: true });
-    } else {
-        profileSection.appendChild(removedContent);
-        rightContent = removedContent;
-        //rightContent.remove();
-        mainContent.style.height = "auto"; // Reset the height
-        postLabels[0].classList.remove("onExpand-postLabel");
-        postBoxes[0].classList.remove("onExpand-boxes");
-        postBoxes[1].classList.remove("onExpand-boxes");
-        expandSection.classList.remove("onExpand-expandSection");
-        arrowButton.classList.remove("onExpand-arrow");
-        rightContent.classList.remove("hide");
-        //mediaContent.classList.add("hide");
-        //rightContent.add()
-    }
-    
-})
-
-*/
 arrowButton.addEventListener("click", function () {
     rightContent.classList.add("hide");
 })
@@ -62,18 +25,17 @@ let isExpanded = false;
 
 expandSection.addEventListener("click", function () {
     if (!isExpanded) {
-        // Add the "flip-out" class to initiate the flip animation
+        // Initiate flip out animation
         rightContent.classList.add("flip-out");
 
-        // After the animation completes, remove the element and store it
-        rightContent.addEventListener("animationend", function () {
+        setTimeout(function () {
             removedContent = rightContent.cloneNode(true); // Clone the content
             rightContent.remove();
-        }, { once: true });
+        }, 400);
 
         // Add classes for expanding
         mainContent.style.height = "1500px";
-        
+        container.classList.add("onExpand-container");
         postLabels[0].classList.add("onExpand-postLabel");
         postBoxes[0].classList.add("onExpand-boxes");
         postBoxes[1].classList.add("onExpand-boxes");
@@ -94,13 +56,10 @@ expandSection.addEventListener("click", function () {
         expandSection.classList.remove("onExpand-expandSection");
         arrowButton.classList.remove("onExpand-arrow");
 
-        // Remove the removed content from the rightContent container
-        
-
         // Append the removed content back to the right-content
         profileSection.appendChild(rightContent);
         //rightContent.appendChild(removedContent);
-        removedContent = null; // Reset removedContent
+        removedContent = null; 
 
         // Update state
         isExpanded = false;

@@ -23,14 +23,20 @@ body, h1, p {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    height: auto;
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,1) 12%, rgba(166,160,160,1) 38%, rgba(255,255,255,1) 25%);; 
+}
+
+.onExpand-container {
+    height: "1500px";
+    background-color: "red";
 }
 
 .profile-section {
     display: flex;
     flex-wrap: wrap;
-    background-color: #ffecd4; 
+    background-color: white; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
     width: 60vw;
     height: 85vh;
@@ -44,13 +50,13 @@ body, h1, p {
     flex-direction: column;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: aqua;
+    
     height: 28vh;
     text-align: left;
 }
 
 .main-content {
-    background-color: green;
+    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,7 +203,7 @@ body, h1, p {
 .topic {
     border-radius: 10px;
     width: 20%;
-    background-color: #d28a5e;
+    background-color: #f18b4b;
     margin-top: -20px;
     margin-left:-20px;
 }
@@ -208,20 +214,16 @@ body, h1, p {
     margin-left: 30px;
     margin-bottom: 5px;
 }
+
 .click-to-expand {
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,0.7344187675070029) 0%, rgba(255,255,255,0) 66%);
+    background: rgb(31,31,31);
+    background: linear-gradient(0deg, rgba(31,31,31,0.5747549019607843) 0%, rgba(255,255,255,0) 66%);
     height: 100px;
     font-size: 50px;
     width: 100%;
     margin-bottom: 0px;
 }
 .click-to-expand:hover {
-    background: rgb(50,100,100);
-    background: linear-gradient(0deg, rgba(0,0,0,0.7344187675070029) 0%, rgba(255,255,255,0) 66%);
-    height: 100px;
-    font-size: 50px;
-    width: 100%;
     cursor: pointer;
 }
 .click-to-expand > p {
@@ -239,15 +241,6 @@ body, h1, p {
     border-width: 0 3px 3px 0;
 }
 
-/*
-.arrow-down:hover {
-    transform: scale(1.2);
-    border-color: orange;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-*/
 .hovered {
     border-color: red;
 }
@@ -280,7 +273,7 @@ body, h1, p {
 }
 
 .flip-out {
-    animation: flipOut 0.4s ease;
+    animation: flipOut 0.5s ease;
     transform: none;
     opacity: 1;
 }
