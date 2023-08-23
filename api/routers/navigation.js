@@ -5,7 +5,7 @@ const authenticator = require("../middleware/authenticator");
 
 const navigationRouter = Router();
 
-navigationRouter.get("/home", navigationController.homepage);
+navigationRouter.get("/", navigationController.homepage);
 navigationRouter.get("/login", navigationController.login);
 navigationRouter.get("/profile", authenticator, navigationController.profile);
 navigationRouter.get("/history", navigationController.history);
