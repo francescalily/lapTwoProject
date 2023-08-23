@@ -34,13 +34,18 @@
      <!-- <div class="grid-item" id="ideas">IDEAS</div> -->
      <div class="grid-item" id="ideas">
       <form id="post-form">
-        <fieldset>
+        <!-- <fieldset>
         <label for="title">Username:</label>
         <input type="text" id="username" name="username" required>
-      </fieldset>
+      </fieldset> -->
       <fieldset>
         <label for="title">Topic:</label>
-        <input type="text" id="topic" name="topic" required>
+        <select id="topic" name="topic">
+        <option value="library">Library</option>
+      <option value="crafts">Crafts</option>
+      <option value="recycling">Recycling</option>
+      <option value="history">History</option>
+    </select>
       </fieldset>
       <fieldset>
         <label for="title">Post:</label>
@@ -49,13 +54,25 @@
       <input type="submit" value="Post">
      </form>
      </div>
-     <div class="grid-item" id="library">LIBRARY</div>
-     <div class="grid-item" id="recycling">RECYCLING CENTER</div>
-     <div class="grid-item" id="knowledge">KNOWLEDGE AND CRAFTS</div>
-     <div class="grid-item" id="history">HISTORY</div>
-     <!-- <div class="grid-item"></div> -->
+     <div class="grid-item" id="library">
+   <button id="libraryBtn">Library</button>
+   <div class="library-posts"></div>
+</div>
+     <div class="grid-item" id="recycling">
+   <button id="recyclingBtn">Recycling</button>
+   <div class="recycling-posts"></div>
+</div>
+     <div class="grid-item" id="crafts"> 
+      <button id="craftsBtn">Crafts</button>
+      <div class="crafts-posts"></div>
      </div>
-     <div id="posts"></div>
+     <div class="grid-item" id="history">
+      <button id="historyBtn">History</button>
+      <div class="history-posts"></div>
+     </div>
+   
+     </div>
+     <div id="posts" style="display: none;"></div>
 
      
 </html>
