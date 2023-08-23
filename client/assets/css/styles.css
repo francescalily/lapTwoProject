@@ -55,6 +55,7 @@ body, h1, p {
     flex-direction: column;
     align-items: center;
     min-height: 72%;
+    position: relative;
 }
 
 .right-content {
@@ -187,6 +188,20 @@ body, h1, p {
     
 }
 
+.post {
+    border: 2px solid black;
+    max-height: 70%;
+    padding: 10px;
+}
+
+.topic {
+    border-radius: 10px;
+    width: 20%;
+    background-color: #d28a5e;
+    margin-top: -20px;
+    margin-left:-20px;
+}
+
 .post-label {
     margin-top: 20px;
     align-self: flex-start;
@@ -246,10 +261,8 @@ body, h1, p {
 }
 .onExpand-expandSection {
     transform: rotate(180deg);
-    position: fixed;
-    position: -webkit-fixed;
-    
-    
+    position: absolute;
+    top: 0%;
 }
 .onExpand-arrow {
     transform: rotate(45deg);
@@ -257,4 +270,13 @@ body, h1, p {
 }
 .onExpand-postLabel {
     margin-top: 10%;
+}
+
+@keyframes flipOut {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(180deg); opacity: 0; }
+}
+
+.flip-out {
+    animation: flipOut 0.4s ease;
 }

@@ -6,6 +6,7 @@ let mediaContent = document.querySelector(".media-icons");
 let postBoxes = document.querySelectorAll(".post-boxes");
 let mainContent = document.querySelector(".main-content");
 let postLabels = document.querySelectorAll(".post-label");
+let removedContent = null;
 
 expandSection.addEventListener("mouseover", function () {
     arrowButton.classList.add("hovered");
@@ -16,14 +17,38 @@ expandSection.addEventListener("mouseleave", function () {
 })
 
 expandSection.addEventListener("click", function () {
-    rightContent.remove();
-    mainContent.style.height = "1500px";
-    postLabels[0].classList.add("onExpand-postLabel");
-    postBoxes[0].classList.add("onExpand-boxes");
-    postBoxes[1].classList.add("onExpand-boxes");
-    expandSection.classList.add("onExpand-expandSection");
-    arrowButton.classList.add("onExpand-arrow");
-    //mediaContent.classList.add("hide");
+
+    if (!removedContent) {
+        // Add the "flip-out" class to initiate the flip animation
+        rightContent.classList.add("flip-out");
+
+        // After the animation completes, remove the element and store it
+        rightContent.addEventListener("animationend", function () {
+            removedContent = rightContent.cloneNode(true); // Clone the content
+            rightContent.remove();
+
+            mainContent.style.height = "1500px";
+            postLabels[0].classList.toggle("onExpand-postLabel");
+            postBoxes[0].classList.toggle("onExpand-boxes");
+            postBoxes[1].classList.toggle("onExpand-boxes");
+            expandSection.classList.toggle("onExpand-expandSection");
+            arrowButton.classList.toggle("onExpand-arrow");
+        }, { once: true });
+    } else {
+        mainContent.appendChild(removedContent);
+        rightContent = removedContent;
+        //rightContent.remove();
+        mainContent.style.height = "auto"; // Reset the height
+        postLabels[0].classList.remove("onExpand-postLabel");
+        postBoxes[0].classList.remove("onExpand-boxes");
+        postBoxes[1].classList.remove("onExpand-boxes");
+        expandSection.classList.remove("onExpand-expandSection");
+        arrowButton.classList.remove("onExpand-arrow");
+        rightContent.classList.remove("hide");
+        //mediaContent.classList.add("hide");
+        //rightContent.add()
+    }
+    
 })
 
 arrowButton.addEventListener("click", function () {
