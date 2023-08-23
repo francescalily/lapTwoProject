@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="./css/global-styles.css">
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -11,16 +12,43 @@
     <title>User Profile</title>
 </head>
 <body>
+      <header>
+        <nav class = "default-bg">
+            <div id="nav-left-buttons" class="center-vertical">
+            </div>
+            <div id="nav-center" class="center-vertical center-horizontal">
+                <ul class="nav-links">
+                    <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
+                    <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
+                    <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
+                </ul>
+            </div>
+        <div id="nav-right-buttons" class="center-vertical">
+                <a class="button nav-spacing-right"><button>Login</button></a>
+                <a class="button nav-spacing-right"><button>Sign-up</button></a>
+            </div>
+        </nav>
+      
+    </header>
     <div class="container">
         <section class="profile-section">
-            <div class="main-content">
+            <section class="top-content">
                 <div class="profile-circle">
                   <img src="assets/fox.png"/>
                 </div>
-                <h1>User Profile</h1>
-                <p>Welcome to your profile page on the council website!</p>
-            </div>
-            <div class="right-content">
+
+                <div class="title-content">
+                  <h1>Fox Smith</h1>
+                  <h4>Fox Smith the terrible, president of Florin</h4>
+                  <p>Welcome to your profile page on the council website!</p>
+                </div>
+            </section>
+
+            <section class="main-content">
+              <p>I am a </p>
+            </section>
+
+            <section class="right-content">
                 <div class="media-icons">
                     <a href="#" style="background: #e60023">
                       <i class="fa-brands fa-pinterest"></i>
@@ -30,8 +58,6 @@
                       <i class="fa-brands fa-linkedin"></i>
                       <span class="tooltip" style="color: #0e76a8">Linkedin</span>
                     </a>
-                    
-                    
                     <a href="#" style="background: #8e36ff">
                       <i class="fa-brands fa-github"></i>
                       <span class="tooltip" style="color: #8e36ff">Github</span>
@@ -45,9 +71,11 @@
                       <span class="tooltip" style="color: #1da1f2">Twitter</span>
                     </a>
                   </div>
-            </div>
+            </section>
             
         </section>
     </div>
+
+    
 </body>
 </html>
