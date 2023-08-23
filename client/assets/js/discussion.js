@@ -97,6 +97,13 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
+  const topic = form.get("topic");
+  const postContent = form.get("post");
+
+  const postData = {
+    topic: topic,
+    post: postContent,
+  };
 
   const options = {
     method: "POST",
@@ -104,16 +111,22 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      topic: form.get("topic"),
-      post: form.get("post"),
-    }),
+    body: JSON.stringify(postData),
   };
 
   const result = await fetch("http://localhost:3000/community", options);
+  const responseData = await result.json();
 
   if ((result.status = 201)) {
-    window.location.reload();
+    const container = document.getElementById("posts");
+    const newPostElem = createPostElement(responseData);
+    container.appendChild(newPostElem);
+
+    // Optional: Clear the form fields after successfully posting
+    e.target.reset();
+  } else {
+    // Handle error case as necessary
+    console.error("Failed to post the data.");
   }
 });
 
