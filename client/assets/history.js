@@ -1,4 +1,5 @@
 
+
 let svg = document.querySelector(".svg-container");
 let pathGroup = svg.querySelector(".path-group");
 let paths = Array.from(pathGroup.querySelectorAll("path"));
@@ -54,18 +55,29 @@ svg1.addEventListener("click", function () {
         setTimeout(() => { openDrawer(svg1); }, 200);
         activeSVG = svg1;
         svg.classList.add("left");
-      
+        svg1.style.cssText = "transform: scale(1.75);  transition: transform 0.7s ease; fill: red;";
+        svg2.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
+        svg3.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
+
        
     } else {
         if (drawer.classList.contains("open")) {
             closeDrawer();
             svg.classList.remove("left");
             activeSVG = null;
+            svg1.style.cssText = "";
+            svg2.style.cssText = "";
+            svg3.style.transform = "";
+
         } else {
             
             openDrawer(svg1);
             svg.classList.add("left");
             activeSVG = svg1;
+            svg1.style.cssText = "";
+            svg2.style.cssText = "";
+            svg3.style.cssText = "";
+
 
         }
     }
@@ -96,6 +108,7 @@ svg3.addEventListener("click", function () {
         setTimeout(() => { openDrawer(svg3); }, 200);
         activeSVG = svg3;
         svg.classList.add("left");
+        
     } else {
         if (drawer.classList.contains("open")) {
             closeDrawer();
