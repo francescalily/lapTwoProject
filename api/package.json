@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
