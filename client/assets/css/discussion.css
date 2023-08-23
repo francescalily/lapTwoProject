@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 html,
 body {
   margin: 0;
@@ -204,8 +209,7 @@ button:hover {
 }
 
 h1 {
-  color: red;
-  border: 1px solid black;
+  color: blcakred;
   margin: 20px;
 }
 
@@ -213,20 +217,39 @@ h1 {
   display: grid;
   grid-template-columns: auto auto;
   height: 700px;
-  background-color: #d4d4d4;
+  background-color: rgba(18, 77, 84, 1);
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
+#ideas {
+  cursor: auto;
+}
+
+.grid-item > #post-form {
+  display: block;
+  font-size: 22px;
+  margin-top: 100px;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
+#topic,
+#post {
+  width: 50%;
+  margin-left: 50px;
+}
+
 .grid-item {
   background-color: rgba(255, 255, 255);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  margin: 8px;
+  margin: 20px;
   padding: 20px;
   font-size: 30px;
   text-align: center;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #ideas {
@@ -240,7 +263,7 @@ h1 {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-
+  cursor: pointer;
   padding: 20px;
   font-size: 30px;
   text-align: center;
