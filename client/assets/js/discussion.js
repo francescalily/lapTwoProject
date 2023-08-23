@@ -10,6 +10,8 @@ const recyclingBtn = document.querySelector("#recyclingBtn");
 const craftsBtn = document.querySelector("#craftsBtn");
 const historyBtn = document.querySelector("#historyBtn");
 
+const allPosts = [];
+
 let isOpen = false;
 
 libraryBtn.addEventListener("click", open);
@@ -37,28 +39,37 @@ function createPostElement(data) {
 }
 
 function open() {
-  // Create the outer div box
   const divBox = document.createElement("div");
   divBox.style.width = "90%";
   divBox.style.height = "700px";
   divBox.style.backgroundColor = "lightgray";
-  divBox.style.position = "fixed"; // Makes it overlay above other content
+  divBox.style.position = "fixed";
   divBox.style.top = "50%";
   divBox.style.left = "50%";
-  divBox.style.transform = "translate(-50%, -50%)"; // Center the div box
+  divBox.style.transform = "translate(-50%, -50%)";
   divBox.style.padding = "20px";
-  divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)"; // Optional shadow for aesthetics
+  divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
+  divBox.style.overflow = "scroll";
 
-  // Add the "Hello" text to divBox
+  // const dataBox = document.createElement("div");
+  // dataBox
+
+  allPosts.forEach((postElem) => {
+    divBox.appendChild(postElem.cloneNode(true));
+  });
+
   const helloText = document.createTextNode("Hello");
   divBox.appendChild(helloText);
 
-  // Create the exit button
   const exitButton = document.createElement("button");
-  exitButton.innerHTML = "Exit";
+  exitButton.textContent = "Exit";
   exitButton.style.marginTop = "20px";
+  exitButton.style.position = "absolute";
+  exitButton.style.top = "8px";
+  exitButton.style.right = "16px";
+  // exitButton.style.top = "80%";
+  // exitButton.style.left = "50%";
 
-  // Add an event listener to the exit button to remove divBox from the DOM
   exitButton.addEventListener("click", function () {
     document.body.removeChild(divBox);
   });
@@ -69,73 +80,6 @@ function open() {
   // Append divBox to the body of the document
   document.body.appendChild(divBox);
 }
-
-// function togglePopUp(event) {
-//   if (event.target.closest("#post-form")) {
-//     return;
-//   }
-//   if (isOpen) {
-//     const fullScreen = gridContainer.querySelector(".fullScreen");
-//     // const formClone = document.getElementById("post-form").cloneNode(true);
-//     // fullScreen.appendChild(formClone);
-//     if (fullScreen) {
-//       gridContainer.removeChild(fullScreen);
-//       gridItems.forEach((item) => {
-//         item.style.display = "block";
-//       });
-//     }
-//     isOpen = false;
-//   } else {
-//     const fullScreen = document.createElement("div");
-//     fullScreen.classList.add("fullScreen");
-
-//     // const sourceElement = event.target;
-//     // const clonedContent = sourceElement.cloneNode(true);
-//     // fullScreen.appendChild(clonedContent);
-
-//     // if (event.target.id === "library") {
-//     //   fullScreen.style.backgroundColor = "blue";
-
-//     //   // const newBox = document.createElement("div");
-//     //   // newBox.className = "newBox";
-
-//     //   // const newText = document.createElement("h2");
-//     //   // newText.textContent = "username";
-//     //   // newBox.appendChild(newText);
-
-//     //   return newBox;
-//     // }
-
-//     if (event.target.id === "recycling") {
-//       fullScreen.style.backgroundColor = "orange";
-//     }
-
-//     if (event.target.id === "knowledge") {
-//       fullScreen.style.backgroundColor = "yellow";
-//     }
-
-//     if (event.target.id === "history") {
-//       fullScreen.style.backgroundColor = "green";
-//     }
-
-//     if (event.target.id === "ideas") {
-//       fullScreen.style.backgroundColor = "red";
-//       item.style.display = "none";
-//     }
-
-//     fullScreen.addEventListener("click", togglePopUp);
-
-//     gridItems.forEach((item) => {
-//       item.style.display = "none";
-//     });
-//     gridContainer.appendChild(fullScreen);
-//     isOpen = true;
-//   }
-// }
-
-// gridItems.forEach((item) => {
-//   item.addEventListener("click", togglePopUp);
-// });
 
 document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -165,25 +109,9 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   console.log(responseData);
 
   if ((result.status = 201)) {
-    let container;
-    switch (topic) {
-      case "library":
-        container = document.querySelector(".library-posts");
-        break;
-      case "recycling":
-        container = document.querySelector(".recycling-posts");
-        break;
-      case "knowledge":
-        container = document.querySelector(".knowledge-posts");
-        break;
-      case "history":
-        container = document.querySelector(".history-posts");
-        break;
-      default:
-        container = document.getElementById("posts");
-    }
+    // let container = document.getElementById("posts");
     const newPostElem = createPostElement(responseData);
-    container.appendChild(newPostElem);
+    allPosts.push(newPostElem);
 
     e.target.reset();
     window.location.reload();
@@ -222,6 +150,7 @@ async function loadPosts() {
           container = document.getElementById("posts");
       }
       const elem = createPostElement(p);
+      allPosts.push(elem); // Add each post to the global array
       container.appendChild(elem);
     });
   } else {
