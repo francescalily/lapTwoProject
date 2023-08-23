@@ -15,13 +15,6 @@ api.use(cors());
 api.use(express.json());
 api.use(express.static(path.join(__dirname, "../client")));
 
-// api.get("/", (req, res) => {
-//   console.log("Request received at root route");
-//   res.json({
-//     title: "Books of Florin",
-//     description: "Find and rate the local books of Florin County!",
-//   });
-// });
 api.use("/", navigationRouter);
 api.use("/books", bookRouter);
 api.use("/community", communityRouter);
