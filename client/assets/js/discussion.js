@@ -5,8 +5,17 @@ const ideas = document.querySelector("#ideas");
 const recycling = document.querySelector("#recycling");
 const knowledge = document.querySelector("#knowledge");
 const history = document.querySelector("#history");
+const libraryBtn = document.querySelector("#libraryBtn");
+const recyclingBtn = document.querySelector("#recyclingBtn");
+const craftsBtn = document.querySelector("#craftsBtn");
+const historyBtn = document.querySelector("#historyBtn");
 
 let isOpen = false;
+
+libraryBtn.addEventListener("click", open);
+recyclingBtn.addEventListener("click", open);
+craftsBtn.addEventListener("click", open);
+historyBtn.addEventListener("click", open);
 
 function createPostElement(data) {
   const post = document.createElement("div");
@@ -27,63 +36,106 @@ function createPostElement(data) {
   return post;
 }
 
-function togglePopUp(event) {
-  if (event.target.closest("#post-form")) {
-    return;
-  }
-  if (isOpen) {
-    const fullScreen = gridContainer.querySelector(".fullScreen");
-    const formClone = document.getElementById("post-form").cloneNode(true);
-    fullScreen.appendChild(formClone);
-    if (fullScreen) {
-      gridContainer.removeChild(fullScreen);
-      gridItems.forEach((item) => {
-        item.style.display = "block";
-      });
-    }
-    isOpen = false;
-  } else {
-    const fullScreen = document.createElement("div");
-    fullScreen.classList.add("fullScreen");
+function open() {
+  // Create the outer div box
+  const divBox = document.createElement("div");
+  divBox.style.width = "90%";
+  divBox.style.height = "700px";
+  divBox.style.backgroundColor = "lightgray";
+  divBox.style.position = "fixed"; // Makes it overlay above other content
+  divBox.style.top = "50%";
+  divBox.style.left = "50%";
+  divBox.style.transform = "translate(-50%, -50%)"; // Center the div box
+  divBox.style.padding = "20px";
+  divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)"; // Optional shadow for aesthetics
 
-    const sourceElement = event.target;
-    const clonedContent = sourceElement.cloneNode(true);
-    fullScreen.appendChild(clonedContent);
+  // Add the "Hello" text to divBox
+  const helloText = document.createTextNode("Hello");
+  divBox.appendChild(helloText);
 
-    if (event.target.id === "library") {
-      fullScreen.style.backgroundColor = "blue";
-    }
+  // Create the exit button
+  const exitButton = document.createElement("button");
+  exitButton.innerHTML = "Exit";
+  exitButton.style.marginTop = "20px";
 
-    if (event.target.id === "recycling") {
-      fullScreen.style.backgroundColor = "orange";
-    }
+  // Add an event listener to the exit button to remove divBox from the DOM
+  exitButton.addEventListener("click", function () {
+    document.body.removeChild(divBox);
+  });
 
-    if (event.target.id === "knowledge") {
-      fullScreen.style.backgroundColor = "yellow";
-    }
+  // Append the exit button to divBox
+  divBox.appendChild(exitButton);
 
-    if (event.target.id === "history") {
-      fullScreen.style.backgroundColor = "green";
-    }
-
-    if (event.target.id === "ideas") {
-      fullScreen.style.backgroundColor = "red";
-      item.style.display = "none";
-    }
-
-    fullScreen.addEventListener("click", togglePopUp);
-
-    gridItems.forEach((item) => {
-      item.style.display = "none";
-    });
-    gridContainer.appendChild(fullScreen);
-    isOpen = true;
-  }
+  // Append divBox to the body of the document
+  document.body.appendChild(divBox);
 }
 
-gridItems.forEach((item) => {
-  item.addEventListener("click", togglePopUp);
-});
+// function togglePopUp(event) {
+//   if (event.target.closest("#post-form")) {
+//     return;
+//   }
+//   if (isOpen) {
+//     const fullScreen = gridContainer.querySelector(".fullScreen");
+//     // const formClone = document.getElementById("post-form").cloneNode(true);
+//     // fullScreen.appendChild(formClone);
+//     if (fullScreen) {
+//       gridContainer.removeChild(fullScreen);
+//       gridItems.forEach((item) => {
+//         item.style.display = "block";
+//       });
+//     }
+//     isOpen = false;
+//   } else {
+//     const fullScreen = document.createElement("div");
+//     fullScreen.classList.add("fullScreen");
+
+//     // const sourceElement = event.target;
+//     // const clonedContent = sourceElement.cloneNode(true);
+//     // fullScreen.appendChild(clonedContent);
+
+//     // if (event.target.id === "library") {
+//     //   fullScreen.style.backgroundColor = "blue";
+
+//     //   // const newBox = document.createElement("div");
+//     //   // newBox.className = "newBox";
+
+//     //   // const newText = document.createElement("h2");
+//     //   // newText.textContent = "username";
+//     //   // newBox.appendChild(newText);
+
+//     //   return newBox;
+//     // }
+
+//     if (event.target.id === "recycling") {
+//       fullScreen.style.backgroundColor = "orange";
+//     }
+
+//     if (event.target.id === "knowledge") {
+//       fullScreen.style.backgroundColor = "yellow";
+//     }
+
+//     if (event.target.id === "history") {
+//       fullScreen.style.backgroundColor = "green";
+//     }
+
+//     if (event.target.id === "ideas") {
+//       fullScreen.style.backgroundColor = "red";
+//       item.style.display = "none";
+//     }
+
+//     fullScreen.addEventListener("click", togglePopUp);
+
+//     gridItems.forEach((item) => {
+//       item.style.display = "none";
+//     });
+//     gridContainer.appendChild(fullScreen);
+//     isOpen = true;
+//   }
+// }
+
+// gridItems.forEach((item) => {
+//   item.addEventListener("click", togglePopUp);
+// });
 
 document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
