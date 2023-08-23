@@ -1,5 +1,8 @@
-
+g {
+    border: 2px solid brown;
+}
 .svg-container {
+    padding-top: 100px;
     position: relative;
     height: 650px;
     width: 700px;
@@ -142,13 +145,55 @@ image-section {
     cursor: pointer;
     padding: 8px;
   }
-  
+  .story-section {
+    display: inline;
+  }
   .left-arrow {
     margin-right: 16px;
+    color: black;
   }
   
   .right-arrow {
     margin-left: 16px;
-  }
+    color: black;
 
+  }
+  #building {
+    display:none;
+    height: 40px;
+    transform: translate(350px, 10px);
+  }
+  #storySection {
+    opacity: 1;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .redHidden {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  @keyframes flashAnimation {
+    0% {
+      fill: red; /* Starting color */
+    }
+    50% {
+      fill: yellow; /* Flashing color */
+    }
+    100% {
+        fill: red;
+    }
+  }
+  @keyframes flushAnimation {
+    0%,
+    10%,
+    100% {
+      width: 0
+    }
+    70%,
+    90% {
+        fill: aqua;
+        width: 100%;
+    }
    
+  }
