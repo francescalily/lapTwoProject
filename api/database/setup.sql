@@ -28,7 +28,7 @@ CREATE TABLE user_account (
 
 CREATE TABLE community (
     user_id INT GENERATED ALWAYS AS IDENTITY,
-    username VARCHAR(30) NOT NULL,
+    username VARCHAR(30),
     topic VARCHAR(50) NOT NULL,
     post VARCHAR(300) NOT NULL,
     votes INT DEFAULT 0,

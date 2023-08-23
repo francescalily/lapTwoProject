@@ -34,10 +34,10 @@
      <!-- <div class="grid-item" id="ideas">IDEAS</div> -->
      <div class="grid-item" id="ideas">
       <form id="post-form">
-        <fieldset>
+        <!-- <fieldset>
         <label for="title">Username:</label>
         <input type="text" id="username" name="username" required>
-      </fieldset>
+      </fieldset> -->
       <fieldset>
         <label for="title">Topic:</label>
         <input type="text" id="topic" name="topic" required>
@@ -49,10 +49,22 @@
       <input type="submit" value="Post">
      </form>
      </div>
-     <div class="grid-item" id="library">LIBRARY</div>
-     <div class="grid-item" id="recycling">RECYCLING CENTER</div>
-     <div class="grid-item" id="knowledge">KNOWLEDGE AND CRAFTS</div>
-     <div class="grid-item" id="history">HISTORY</div>
+     <div class="grid-item" id="library">
+   <h2>LIBRARY</h2>
+   <div class="library-posts"></div>
+</div>
+     <div class="grid-item" id="recycling">
+   <h2>RECYCLING CENTER</h2>
+   <div class="recycling-posts"></div>
+</div>
+     <div class="grid-item" id="knowledge"> 
+      <h2>KNOWLEDGE AND CRAFTS</h2>
+      <div class="knowledge-posts"></div>
+     </div>
+     <div class="grid-item" id="history">
+      <h2>HISTORY</h2>
+      <div class="knowledge-posts"></div>
+     </div>
      <!-- <div class="grid-item"></div> -->
      </div>
      <div id="posts"></div>

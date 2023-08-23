@@ -89,12 +89,12 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
-  const username = form.get("username");
+  //const username = form.get("username");
   const topic = form.get("topic");
   const postContent = form.get("post");
 
   const postData = {
-    username: username,
+    //username: username,
     topic: topic,
     post: postContent,
   };
@@ -113,7 +113,23 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   console.log(responseData);
 
   if ((result.status = 201)) {
-    const container = document.getElementById("posts");
+    let container;
+    switch (topic) {
+      case "library":
+        container = document.querySelector(".library-posts");
+        break;
+      case "recycling":
+        container = document.querySelector(".recycling-posts");
+        break;
+      case "knowledge":
+        container = document.querySelector(".knowledge-posts");
+        break;
+      case "history":
+        container = document.querySelector(".history-posts");
+        break;
+      default:
+        container = document.getElementById("posts");
+    }
     const newPostElem = createPostElement(responseData);
     container.appendChild(newPostElem);
 
@@ -136,9 +152,23 @@ async function loadPosts() {
   if (response.status == 200) {
     const posts = await response.json();
 
-    const container = document.getElementById("posts");
-
     posts.forEach((p) => {
+      let container;
+      switch (p.topic) {
+        case "library":
+          container = document.querySelector(".library-posts");
+          break;
+        case "recycling":
+          container = document.querySelector(".recycling-posts");
+          break;
+        case "knowledge":
+          container = document.querySelector(".knowledge-posts");
+        case "history":
+          container = document.querySelector(".history-posts");
+
+        default:
+          container = document.getElementById("posts");
+      }
       const elem = createPostElement(p);
       container.appendChild(elem);
     });
