@@ -184,16 +184,14 @@ image-section {
         fill: red;
     }
   }
+
   @keyframes flushAnimation {
-    0%,
-    10%,
-    100% {
-      width: 0
+    from {
+      height: 0;
     }
-    70%,
-    90% {
+    to {
         fill: aqua;
-        width: 100%;
+        height: 100%;
     }
    
   }
