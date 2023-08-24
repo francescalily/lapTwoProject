@@ -203,7 +203,7 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
     body: JSON.stringify(postData),
   };
 
-  const result = await fetch("http://localhost:3000/community", options);
+  const result = await fetch("/community", options);
   const responseData = await result.json();
   console.log(responseData);
 
@@ -225,7 +225,7 @@ async function loadPosts() {
     },
   };
 
-  const response = await fetch("http://localhost:3000/community", options);
+  const response = await fetch("/community", options);
 
   if (response.status == 200) {
     const posts = await response.json();
