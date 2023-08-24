@@ -85,6 +85,16 @@ async function destroy(req, res) {
   }
 }
 
+async function getAllByUsername(req, res){
+  try {
+    const username = req.params.username;
+    const discussions = await Discussion.getAllByUsername(username);
+    res.json(discussions);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 module.exports = {
   index,
   show,
@@ -92,4 +102,5 @@ module.exports = {
   update,
   getTop,
   destroy,
+  getAllByUsername
 };
