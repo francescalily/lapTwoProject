@@ -1,8 +1,8 @@
 const db = require("../database/connect");
 
 class Community {
-  constructor({ user_id, username, topic, post, votes }) {
-    this.id = user_id;
+  constructor({ post_id, username, topic, post, votes }) {
+    this.id = post_id;
     this.username = username;
     this.topic = topic;
     this.post = post;
@@ -29,7 +29,7 @@ class Community {
 
   static async getOneById(id) {
     const response = await db.query(
-      "SELECT * FROM community WHERE user_id = $1;",
+      "SELECT * FROM community WHERE post_id = $1;",
       [id]
     );
     if (response.rows.length != 1) {
@@ -49,18 +49,23 @@ class Community {
   }
 
   static async create(data) {
-    const { topic, post, user_id } = data;
-    await db.query(
-      "INSERT INTO community (user_id, topic, post) VALUES ($1, $2, $3);",
-      [user_id, topic, post]
+    const { topic, post, username, user_id } = data;
+    console.log("usenamamam", username);
+    console.log("useridddd", user_id);
+    const response = await db.query(
+      "INSERT INTO community (username, topic, post) VALUES ($1, $2, $3) RETURNING post_id;",
+      [username, topic, post]
     );
+    const newId = response.rows[0].post_id;
+    const newPost = await Community.getOneById(newId);
+    /*
     const response = await db.query(
       `SELECT community.*, user_account.username 
          FROM community
          JOIN user_account ON community.user_id = user_account.user_id 
          WHERE community.user_id = $1;`,
       [user_id]
-    );
+    ); */
     return response.rows[0];
   }
 

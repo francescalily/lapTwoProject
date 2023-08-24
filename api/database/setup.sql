@@ -30,12 +30,14 @@ CREATE TABLE user_account (
 
 
 CREATE TABLE community (
-    user_id INT GENERATED ALWAYS AS IDENTITY,
+    post_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT,
     username VARCHAR(30) NOT NULL,
     topic VARCHAR(50) NOT NULL,
     post VARCHAR(300) NOT NULL,
     votes INT DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES user_account (user_id)
+    FOREIGN KEY (user_id) REFERENCES user_account (user_id),
+    PRIMARY KEY (post_id)
 );
 
 

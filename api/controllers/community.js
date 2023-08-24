@@ -24,13 +24,14 @@ async function create(req, res) {
   console.log(req.token);
   const decoded = jwt.verify(req.token, process.env.TOKEN_KEY);
   //let userId = decoded.user.user_id
-  const username_token = decoded.username;
   console.log(decoded)
   console.log(decoded.id)
+  console.log(decoded.username)
   try {
     const { topic, post } = req.body;
     const user_id = decoded.id;
-    const data = { topic, post, user_id };
+    const username = decoded.username;
+    const data = { topic, post, username, user_id };
     const community = await Community.create(data);
     res.status(200).json({ community: community });
   } catch (err) {
