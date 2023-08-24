@@ -239,12 +239,11 @@ async function loadPosts() {
       container.appendChild(elem);
     });
   } else {
-    window.location.assign("./discussion.html");
+    console.log("Error loading the page");
   }
 }
 
 loadPosts();
-
 //let container;
 // switch (p.topic) {
 //   case "library":
