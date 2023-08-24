@@ -20,8 +20,17 @@ document.querySelector('#login-form').addEventListener("submit", async e => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("exp", Date.now() + 60 * 60 * 1000);
         window.history.back();
     } else {
         alert(data.error);
     }
 })
+
+function ifLogged() {
+    if(localStorage.token) {
+        window.location.assign("/");
+    }
+}
+
+ifLogged()
