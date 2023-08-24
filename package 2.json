@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./api/index.js",
+    "start": "node ./api/index.js",
+    "setup-db": "node ./api/database/setup.js",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "live": "live-server --port 9000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "jsdom": "^22.1.0",
+    "live-server": "^1.1.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}
