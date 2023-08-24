@@ -184,12 +184,13 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
-  //const username = form.get("username");
+  const username = form.get("username");
   const topic = form.get("topic");
   const postContent = form.get("post");
 
+  const userId = localStorage.getItem("userId"); // assuming you save userId in local storage upon login
   const postData = {
-    //username: username,
+    user_id: userId,
     topic: topic,
     post: postContent,
   };
