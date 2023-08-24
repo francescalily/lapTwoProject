@@ -2,7 +2,7 @@
 Lap Two Project - A community app aimed for Florin council
 
 ## To run server
-- cd into /api
+- make sure you are in the root directory (not in /api or /client)
 - make a .env file
 - add
     ```
