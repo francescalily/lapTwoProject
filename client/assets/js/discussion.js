@@ -53,7 +53,7 @@ function openHistory() {
   divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
   divBox.style.overflow = "scroll";
 
-  allPosts.forEacdch((postElem) => {
+  allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "history") {
       divBox.appendChild(postElem.cloneNode(true));
     }
@@ -184,12 +184,13 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
-  //const username = form.get("username");
+  const username = form.get("username");
   const topic = form.get("topic");
   const postContent = form.get("post");
 
+  const userId = localStorage.getItem("userId");
   const postData = {
-    //username: username,
+    user_id: userId,
     topic: topic,
     post: postContent,
   };
@@ -238,12 +239,11 @@ async function loadPosts() {
       container.appendChild(elem);
     });
   } else {
-    window.location.assign("./discussion.html");
+    console.log("Error loading the page");
   }
 }
 
 loadPosts();
-
 //let container;
 // switch (p.topic) {
 //   case "library":

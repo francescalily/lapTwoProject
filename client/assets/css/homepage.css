@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap');
 .cover-container {
     padding-top: 100px;
     max-height: 100%;
@@ -8,13 +8,40 @@
 }
 
 .welcome {
+    position: relative;
     border: 1px;
     width: 60%;
     padding: 20px;
-    background-color: aqua;
+    background-color: rgba(18, 77, 84, 1);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-   
+}
+.welcome-wel {
+    position: absolute;
+    color: #e1d9cf;
+    font-weight: lighter;
+    font-size: 3.5rem;
+    margin: 50px 0 0 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.welcome-to {
+    position: absolute;
+    color: #e1d9cf;
+    font-weight: lighter;
+    font-size: 3.5rem;
+    margin: 120px 0 0 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.welcome h1 {
+    display: flex;
+    margin: 220px 0 0 0;
+    padding: 0;
+    font-size: 8rem;
+    color: #e1d9cf;
+    font-family: 'Montserrat Alternates', sans-serif;
+    letter-spacing: 0.7rem;
 }
 
 .slider-wrapper {
@@ -76,7 +103,7 @@
 } */
 
 .site-container {
-    background-color: grey;
+    /* background-color: grey; */
     padding: 10px;
     margin: 600px 90px 90px 90px; 
     display: flex;
@@ -85,25 +112,28 @@
 
 .news-container {
     display: flex;
-    background-color: red;
+    background-color: rgba(18, 77, 84, 1);
     margin: 10px;
     padding: 20px;
     height: 530px;
     justify-content: space-evenly;
     column-gap: 20px;
     font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 
 
 .news-box {
     flex: 1;
-    border-style: solid;
+    /* border-style: solid; */
     box-sizing: border-box;
     /* height: 200px; */
     aspect-ratio: 1/1;
     padding: 10px;
     background-color: #e1d9cf;
+    border-radius: 10px;
 }
 
 .news-img {
@@ -161,17 +191,19 @@
 
 .pages-container {
     display: flex;
-    background-color: blueviolet;
+    background-color: rgba(18, 77, 84, 1);
     margin: 20px 10px 10px 10px;
     padding: 20px;
     height: 500px;
     justify-content: space-evenly;
     column-gap: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    
 }
 .pages-box {
     /* display: flex; */
     flex: 1;
-    border-style: solid;
     box-sizing: border-box;
     aspect-ratio: 1/1;
     /* padding: 10px; */
@@ -192,7 +224,7 @@
 
 }
 .pages-img img{
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-image.jpg');
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-image.jpg'); */
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -201,7 +233,9 @@
 }
 .overlay {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
     width: 100%;
     height: 10%;
     bottom: 0;
@@ -213,17 +247,26 @@
 
 .overlay h2 {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin: 0;
     padding-top: 10px;
     opacity: 1;
-    color: white;
+    color: #e1d9cf;
     transition: ease 0.3s;
+}
+.overlay h3 {
+   color: #e1d9cf;
+   padding: 10px;
+
 }
 
 .pages-box:hover .overlay{
     height: 100%;
 }
 .pages-box:hover .overlay h2 {
+    padding-top: 80px;
     letter-spacing: 0.3rem;
     font-size: 2rem;
+    color: white;
 }

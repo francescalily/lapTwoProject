@@ -11,7 +11,10 @@ class Community {
 
   static async getAll() {
     const response = await db.query(
-      "SELECT * FROM community ORDER BY username;"
+      `SELECT community.*, user_account.username 
+     FROM community
+     JOIN user_account ON community.user_id = user_account.user_id 
+     ORDER BY user_account.username;`
     );
     if (response.rows.length === 0) {
       throw new Error("No posts available");
@@ -41,14 +44,19 @@ class Community {
   }
 
   static async create(data) {
-    const { topic, post } = data;
-    const response = await db.query(
-      "INSERT INTO community (topic, post) VALUES ($1, $2) RETURNING *;",
-      [topic, post]
+    const { topic, post, user_id } = data;
+    await db.query(
+      "INSERT INTO community (user_id, topic, post) VALUES ($1, $2, $3);",
+      [user_id, topic, post]
     );
-    const user_id = response.rows[0].user_id;
-    const newPost = await Community.getOneById(user_id);
-    return newPost;
+    const response = await db.query(
+      `SELECT community.*, user_account.username 
+         FROM community
+         JOIN user_account ON community.user_id = user_account.user_id 
+         WHERE community.user_id = $1;`,
+      [user_id]
+    );
+    return response.rows[0];
   }
 
   async update(data) {
