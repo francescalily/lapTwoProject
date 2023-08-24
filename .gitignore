@@ -3,6 +3,6 @@ node_modules
 build
 dist
 .env
-
+coverage
 /api/node_modules/
 /api/node_modules
