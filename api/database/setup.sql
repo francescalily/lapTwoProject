@@ -27,18 +27,28 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
+INSERT INTO user_account
+    (username, isadmin, password)
+VALUES
+('Harry', TRUE, FALSE),
+('Helly', TRUE, FALSE);
+
+
+
 CREATE TABLE community (
     user_id INT GENERATED ALWAYS AS IDENTITY,
-    username VARCHAR(30),
+    -- username VARCHAR(30),
     topic VARCHAR(50) NOT NULL,
     post VARCHAR(300) NOT NULL,
     votes INT DEFAULT 0,
-    PRIMARY KEY (user_id)
+    FOREIGN KEY (user_id) REFERENCES user_account (user_id)
 );
 
 INSERT INTO community
-    (username, topic, post, votes)
+    (topic, post, votes)
 VALUES
-('Franki', 'History', 'I love how the git commited team are working on the history of Florin!', 0),
-('Hasan', 'Ideas', 'I think this website is the best website I have ever been on:---)', 0);
+('History', 'I love how the git commited team are working on the history of Florin!', 0),
+('Library', 'I think this website is the best website I have ever been on:---) I love being able to get good book reccomendations.', 0);
+
+
 
