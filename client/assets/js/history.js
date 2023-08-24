@@ -30,7 +30,7 @@ function restoreOrder(path) {
 
 
 paths.forEach(function (item) {
-    var pathLength = item.getTotalLength();
+    
     // item.setAttribute("stroke-dasharray", pathLength);
     // item.setAttribute("stroke-dashoffset", pathLength);
     item.classList.toggle("new");
