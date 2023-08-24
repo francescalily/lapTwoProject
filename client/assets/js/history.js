@@ -207,6 +207,7 @@ begin.addEventListener("click", () => {
     svg1.style.animation = "flashAnimation 0.5s infinite";
     storySection.classList.add("redHidden");
     redania.classList.remove("redHidden");
+    next.style.cssText = "z-index: 20"
 })
 
 next.addEventListener("click", () => {
@@ -245,12 +246,12 @@ const building = document.querySelector("#building");
 const war = document.querySelector("#war");
 const woods = document.querySelector("#woods");
 
-const images = ["./assets/download.jpeg", "image2.jpg", "image3.jpg"]; // Replace with your image URLs
+const images = ["./assets/building.jpeg", "./assets/tank.jpeg", "./assets/woodies.jpeg"]; // Replace with your image URLs
 const descriptions = [
     
-        "This place is fukkkkin magical",
-        "May the lord bless this place",
-        "Damn ok bro we get it"
+        "A booming economic city in the heart of Cintra. This region is famous for bringing the conceptual design of Florin to life.",
+        "The remains of an Alaskan tank that echoes the failed attempt to invade our country. Held on display in the Frontal Square to remind Florinians of the spirit they endured against the unwarranted attack. ",
+        "The Wizards Woods: A place of philosophical density where a large portion of Cintrans would come and discuss the county's Civil and Political movements."
     
 ]
 let currentIndex = 0;
@@ -259,6 +260,8 @@ function displayIcon() {
     if(currentIndex === 0) {
     building.style.display = "inline";
     woods.style.display = "";
+    war.style.display = "";
+
 }
 else if(currentIndex === 1) {
     building.style.display = "";
