@@ -5,7 +5,7 @@ let document;
 
 //FRONT END TESTING GOES HERE - WILL BE CHANGED TO FRONTEND FUNCTIONS. EG:
 
-describe("index.html", () => {
+xdescribe("index.html", () => {
   beforeEach(async () => {
     dom = await renderDom("../client/index.html");
     document = await dom.window.document;

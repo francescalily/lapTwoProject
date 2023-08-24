@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./assets/css/global-styles.css">
+    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <script defer src="./assets/js/"></script>
     <title>Homepage</title>
 </head>
 <body>
-    <header>
         <nav class = "default-bg">
             <div id="nav-left-buttons" class="center-vertical">
             </div>
             <div id="nav-center" class="center-vertical center-horizontal">
                 <ul class="nav-links">
-                    <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
-                    <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
-                    <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
+                    <li><a id="home-button" href="/" class="nav-spacing">Home</a></li>
+                    <li><a id="history-button" href="/history" class="nav-spacing">History</a></li>
+                    <li><a id="community-button" href="/discussion" class="nav-spacing">Community Board</a></li>
                 </ul>
             </div>
          <div id="nav-right-buttons" class="center-vertical">
@@ -24,8 +25,117 @@
                 <a class="button nav-spacing-right"><button>Sign-up</button></a>
             </div>
         </nav>
-       
-    </header>
+    <section class="cover-container">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <img id="slide-1" src="./assets/bridge.jpg" alt="scenic bridge">
+                <img id="slide-2" src="./assets/poppy.jpg" alt="scenic poppy">
+                <img id="slide-3" src="./assets/rainbow.jpg" alt="scenic rainbow">
+            </div>
+            <div class="slider-nav">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+            </div>
+            <div class="welcome">
+                <h2 class="welcome-wel">Welcome</h2>
+                <h2 class="welcome-to">to</h2>
+                <h1>Florin</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="site-container">
+        <div class="news-container">
+            <div class="news-box">
+                <!-- news img -->
+                <div class="news-img">
+                    <img src="./assets/goose.jpg" alt="1st article">
+                </div>
+                <!-- news text -->
+                <div class="news-text">
+                    <span>23 August 2023 / Story</span>
+                    <a href="#" class="news-title">Local geese terrorise local residents</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere tristique velit. Nulla tempor purus eget lacinia consequat. Sed tortor sem, posuere vitae vulputate pretium, auctor sit amet risus. Proin lobortis dapibus nisl, at mattis nulla laoreet eu.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="news-box">
+                 <!-- news img -->
+                 <div class="news-img">
+                    <img src="./assets/pasty.jpg" alt="2nd article">
+                </div>
+                <!-- news text -->
+                <div class="news-text">
+                    <span>21 August 2023 / Story 2</span>
+                    <a href="#" class="news-title">Out-of-date pasty is sold to mother of two</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere tristique velit. Nulla tempor purus eget lacinia consequat. Sed tortor sem, posuere vitae vulputate pretium, auctor sit amet risus. Proin lobortis dapibus nisl, at mattis nulla laoreet eu.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <!-- news img -->
+                <div class="news-img">
+                    <img src="./assets/bin.jpg" alt="3rd article">
+                </div>
+                <!-- news text -->
+                <div class="news-text">
+                    <span>24 August 2023 / Story 3</span>
+                    <a href="#" class="news-title">Man freed after getting his head stuck in a bin</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere tristique velit. Nulla tempor purus eget lacinia consequat. Sed tortor sem, posuere vitae vulputate pretium, auctor sit amet risus. Proin lobortis dapibus nisl, at mattis nulla laoreet eu.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <!-- news img -->
+                <div class="news-img">
+                    <img src="./assets/hedge.jpg" alt="4th article">
+                </div>
+                <!-- news text -->
+                <div class="news-text">
+                    <span>25 August 2023 / Story 2</span>
+                    <a href="#"  class="news-title">Fury over giant hedge</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere tristique velit. Nulla tempor purus eget lacinia consequat. Sed tortor sem, posuere vitae vulputate pretium, auctor sit amet risus. Proin lobortis dapibus nisl, at mattis nulla laoreet eu.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="pages-container">
+            <div class="pages-box">
+                <!-- pages img -->
+                <div class="pages-img">
+                    <img src="./assets/statue-sq.jpg" alt="History page">
+                </div>
+                <!-- pages overlay     -->
+                <div class="overlay">
+                    <h2>History & Culture</h2>
+                    <h3>Click to discover more about our beautiful county</h3>
+                </div>
+            </div>
+            <div class="pages-box">
+                <!-- pages img -->
+                <div class="pages-img">
+                    <img src="./assets/community-sq.jpg" alt="Community board">
+                </div>
+                <!-- overlay -->
+                <div class="overlay">
+                    <h2>Community</h2>
+                    <h3>Want to see current discussions in our community? Click to see what's going on </h3>
+                </div>                    
+            </div>
+            <div class="pages-box">
+                <!-- pages img -->
+                <div class="pages-img">
+                    <img src="./assets/account-sq.jpg" alt="Account page">
+                </div>
+                <!-- overlay -->
+                <div class="overlay">
+                    <h2>Account</h2>
+                    <h3>Are you a member of our community or would like to join? Click here to find out more</h3>
+                </div>
+            </div>
+        </div>
+    </section>
     <main>
 
     </main>

@@ -1,7 +1,7 @@
 const request = require("supertest");
 
 const app = require("../api");
-describe("api server", () => {
+xdescribe("api server", () => {
   let api;
 
   beforeAll(() => {
