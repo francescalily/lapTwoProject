@@ -41,10 +41,10 @@ class Community {
   }
 
   static async create(data) {
-    const { username, topic, post } = data;
+    const { topic, post } = data;
     const response = await db.query(
-      "INSERT INTO community (username, topic, post) VALUES ($1, $2, $3) RETURNING *;",
-      [username, topic, post]
+      "INSERT INTO community (topic, post) VALUES ($1, $2) RETURNING *;",
+      [topic, post]
     );
     const user_id = response.rows[0].user_id;
     const newPost = await Community.getOneById(user_id);
