@@ -10,11 +10,16 @@ class Community {
   }
 
   static async getAll() {
+    /*
     const response = await db.query(
       `SELECT community.*, user_account.username 
      FROM community
      JOIN user_account ON community.user_id = user_account.user_id 
      ORDER BY user_account.username;`
+    );
+    */
+    const response = await db.query(
+      `SELECT * FROM community`
     );
     if (response.rows.length === 0) {
       throw new Error("No posts available");

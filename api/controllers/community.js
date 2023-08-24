@@ -1,4 +1,5 @@
 const Community = require("../models/Community");
+const jwt = require("jsonwebtoken");
 
 async function index(req, res) {
   try {
@@ -20,13 +21,35 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.token);
+  const decoded = jwt.verify(req.token, process.env.TOKEN_KEY);
+  //let userId = decoded.user.user_id
+  const username_token = decoded.username;
+  console.log(decoded)
+  console.log(decoded.id)
   try {
-    data = req.body;
+    const { topic, post } = req.body;
+    const user_id = decoded.id;
+    const data = { topic, post, user_id };
     const community = await Community.create(data);
     res.status(200).json({ community: community });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+  /*
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      res.json({
+        message: "POST created...",
+        authData
+      });
+    }
+  })
+  
+  
+  */
 }
 
 async function update(req, res) {
