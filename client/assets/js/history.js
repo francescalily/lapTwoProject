@@ -154,6 +154,7 @@ function openDrawer(svg) {
     } else if (svg === svg2) {
         console.log("Opening svg2 content");
         content_svg2.classList.remove("hidden");
+        displayIcon();
     } else if (svg === svg3) {
         console.log("Opening svg3 content");
         content_svg3.classList.remove("hidden");
@@ -163,6 +164,7 @@ function openDrawer(svg) {
 
 function closeDrawer() {
     drawer.classList.remove("open");
+    removeIcon();
 }
 
 
@@ -182,6 +184,7 @@ window.addEventListener("resize", function () {
     if (activeSVG) {
         closeDrawer();
         openDrawer(activeSVG);
+        
     }
 })
 
@@ -190,12 +193,15 @@ const description = document.getElementById("image-description")
 const image = document.getElementById("image");
 const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
-const building = document.querySelector("#building");
 const storySection = document.querySelector(".story-section");
 const begin = document.querySelector(".begin");
 const redania = document.querySelector("#redania");
 const redWater = document.querySelector("#redWater");
 const next = document.querySelector("#next");
+const red2 = document.querySelector("#red2");
+const redSprings = document.querySelector("#redSprings");
+const redFinish = document.querySelector("#redFinish")
+
 
 begin.addEventListener("click", () => {
     svg1.style.animation = "flashAnimation 0.5s infinite";
@@ -209,8 +215,36 @@ next.addEventListener("click", () => {
     redania.classList.add("redHidden");
     redWater.classList.remove("redHidden");
     
-
 })
+
+red2.addEventListener("click",() => {
+    
+    
+    svg1.style.cssText = "animation: gradient-fill-animation; transition: transform 2s ease";
+    svg2.style.cssText = "transition: transform 2s ease";
+    svg3.style.cssText = "transition: transform 3s ease";
+
+
+    // svg1.style.fill = document.querySelector("#gradient1")
+    redWater.classList.add("redHidden");
+    redSprings.classList.remove("redHidden");
+})
+
+redFinish.addEventListener("click", () => {
+
+    closeDrawer();
+    redSprings.classList.add("redHidden");
+    storySection.classList.remove("redHidden");
+    svg1.style.cssText = "";
+    svg2.style.cssText = "";
+    svg3.style.cssText = "";
+    svg.classList.remove("left");
+})
+
+const building = document.querySelector("#building");
+const war = document.querySelector("#war");
+const woods = document.querySelector("#woods");
+
 const images = ["./assets/download.jpeg", "image2.jpg", "image3.jpg"]; // Replace with your image URLs
 const descriptions = [
     
@@ -222,7 +256,25 @@ const descriptions = [
 let currentIndex = 0;
 
 function displayIcon() {
+    if(currentIndex === 0) {
     building.style.display = "inline";
+    woods.style.display = "";
+}
+else if(currentIndex === 1) {
+    building.style.display = "";
+    war.style.display = "inline"
+    woods.style.display = "";
+}
+else if (currentIndex === 2) {
+    war.style.display = "";
+    woods.style.display = "inline"
+    building.style.display = "";
+}
+else {
+    woods.style.display = "";
+    war.style.display = "";
+    building.style.display = "";
+}
 }
 function updateDescription() {
     description.textContent = descriptions[currentIndex]
@@ -233,28 +285,27 @@ function updateImage() {
 
 leftArrow.addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
+  console.log("current index:" + currentIndex)
   updateImage();
   updateDescription();
+  displayIcon();
 });
 
-rightArrow.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateImage();
-  updateDescription();
+
 
   rightArrow.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
-    updateDescription();
-    
-    // Apply the flash animation to svg1
-    svg1.style.animation = "flashAnimation 0.5s ease-in-out";
-    // Reset the animation after a short delay
-    setTimeout(() => {
-      svg1.style.animation = "";
-    }, 500);
-  });
-});
+    console.log("current index:" + currentIndex)
 
+    updateDescription();
+    displayIcon()
+  });
+
+function removeIcon() {
+woods.style.display = "";
+war.style.display = "";
+building.style.display = "";
+}
 updateImage(); // Initialize with the first image
 

@@ -159,9 +159,20 @@ image-section {
 
   }
   #building {
-    display:none;
+    display:none; 
     height: 40px;
-    transform: translate(350px, 10px);
+    transform: translate(520px, 500px);
+  }
+
+  #war {
+    display: none;
+    height: 40px;
+    transform: translate(550px, 420px);
+  }
+  #woods {
+    display: none;
+    height: 40px;
+    transform: translate(530px, 330px);
   }
   #storySection {
     opacity: 1;
@@ -172,6 +183,7 @@ image-section {
     opacity: 0;
     transform: scale(0.8);
   }
+
   
   @keyframes flashAnimation {
     0% {
@@ -194,4 +206,16 @@ image-section {
         height: 100%;
     }
    
+  }
+
+  @keyframes gradient-fill-animation {
+    from {
+        fill: aqua;
+        height:0;
+    }
+    to {
+      fill: url(#gradient1); /* Gradient color */
+      height: 100;
+
+    }
   }
