@@ -10,8 +10,16 @@ describe('User Controller', () => {
             email: 'test@testing.com',
             password: 'test123'
         });
-
     expect(response.status).toBe(201);
-    // Add more assertions to check the response body or database changes
+    })
+
+    it('should login with existing user credentials', async () => {
+        const response = await request(app)
+        .post('/users/login')
+        .send({
+            email: 'test@testing.com',
+            password: 'test123'
+        });
+    expect(response.status).toBe(200);
     })
 });
