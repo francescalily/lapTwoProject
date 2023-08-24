@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const bookRouter = require("./routers/books");
 const logRoutes = require("./middleware/logger");
 const userRouter = require("./routers/user");
-const communityRouter = require("./routers/community");
+const discussionRouter = require("./routers/discussion");
 const navigationRouter = require("./routers/navigation");
 
 const api = express();
@@ -18,7 +18,7 @@ api.use(express.static(path.join(__dirname, "../client")));
 
 api.use("/", navigationRouter);
 api.use("/books", bookRouter);
-api.use("/community", communityRouter);
+api.use("/discussions", discussionRouter);
 
 api.use(logRoutes);
 
