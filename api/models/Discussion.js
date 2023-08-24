@@ -93,6 +93,20 @@ class Discussion {
     }
     return new Discussion(response.rows[0]);
   }
+
+  static async getAllByUsername(username) {
+    const response = await db.query(
+      `SELECT * FROM discussion 
+      JOIN user_account ON discussion.username = user_account.username 
+      WHERE user_account.username = $1;`,
+      [username] // Enclose the username in single quotes
+    );
+    if (response.rows.length === 0) {
+      throw new Error("No discussions available");
+    }
+    const discussions = response.rows.map(row => new Discussion(row));
+    return discussions;
+  }
 }
 
 module.exports = Discussion;

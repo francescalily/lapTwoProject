@@ -17,4 +17,6 @@ discussionRouter.patch("/:id", discussionController.update);
 
 discussionRouter.delete("/:id", discussionController.destroy);
 
+discussionRouter.get('/users/:username', discussionController.getAllByUsername);
+
 module.exports = discussionRouter;

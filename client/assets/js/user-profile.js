@@ -74,3 +74,13 @@ async function check() {
 
 check();
 
+async function fetchCreatedDiscussions() {
+    try {
+        const response = await fetch('https://florin-council-jtgy.onrender.com/discussions/users/7'); // Replace with your API endpoint for fetching created posts
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching created posts:', error);
+        return [];
+    }
+}
