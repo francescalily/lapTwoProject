@@ -7,7 +7,7 @@ const navigationRouter = Router();
 
 navigationRouter.get("/", navigationController.homepage);
 navigationRouter.get("/login", navigationController.login);
-navigationRouter.get("/profile", authenticator, navigationController.profile);
+navigationRouter.get("/profile", navigationController.profile);
 navigationRouter.get("/history", navigationController.history);
 navigationRouter.get("/discussion", navigationController.discussion);
 
