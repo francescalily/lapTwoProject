@@ -5,7 +5,7 @@
   "main": "index.js",
   "jest": {
     "roots": [
-      "<rootDir>/tests"
+      "<rootDir>/api/tests"
     ],
     "moduleDirectories": [
       "node_modules"
