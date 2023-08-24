@@ -4,46 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <script defer type="text/javascript" src="assets/js/isLogged.js"></script>
     <script defer type="text/javascript" src="assets/js/history.js"></script> 
     <link rel="stylesheet" type="text/css" href="assets/css/global-styles.css">
     <link rel="stylesheet" type="text/css" href="assets/css/history.css">
-    <nav class = "default-bg">
-      <div id="nav-left-buttons" class="center-vertical">
-      </div>
-      <div id="nav-center" class="center-vertical center-horizontal">
-          <ul class="nav-links">
-              <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
-              <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
-              <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
-          </ul>
-      </div>
-   <div id="nav-right-buttons" class="center-vertical">
-          <a class="button nav-spacing-right"><button>Login</button></a>
-          <a class="button nav-spacing-right"><button>Sign-up</button></a>
-      </div>
-  </nav>
 </head>
 <body>
-    <section>
-      <nav class = "default-bg">
-        <div id="nav-left-buttons" class="center-vertical">
-        </div>
-        <div id="nav-center" class="center-vertical center-horizontal">
-            <ul class="nav-links">
-                <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
-                <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
-                <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
-            </ul>
-        </div>
-     <div id="nav-right-buttons" class="center-vertical">
-            <a class="button nav-spacing-right"><button>Login</button></a>
-            <a class="button nav-spacing-right"><button>Sign-up</button></a>
-        </div>
-    </nav>
-    
-    <h1>Explore Florin County</h1>
-</section>
+  <nav class = "default-bg">
+    <div id="nav-left-buttons" class="center-vertical">
+    </div>
+    <div id="nav-center" class="center-vertical center-horizontal">
+        <ul class="nav-links">
+            <li><a id="home-button" href="/" class="nav-spacing">Home</a></li>
+            <li><a id="history-button" href="/history" class="nav-spacing">History</a></li>
+            <li><a id="community-button" href="/discussion" class="nav-spacing">Community Board</a></li>
+        </ul>
+    </div>
+    <div id="logged-in" class="nav-right-buttons center-vertical hidden">
+      <a id="logout-btn" class="button nav-spacing-right"><button>Logout</button></a>
+      <a id="profile-btn" class="button nav-spacing-right"><button>Profile</button></a>
+    </div>
+    <div id="logout-btn" class="nav-right-buttons center-vertical hidden">
+        <a class="button nav-spacing-right"><button>Logout</button></a>
+    </div>
+  </nav>
 <section class="svg-background">
     <section id="svg-section">
         <svg viewBox="0 0 800 800" class="svg-container">
@@ -110,7 +94,7 @@
             <h2 id="cTitle">Places to see in Cintra </h2>
             <div class="image-section">
               <button class="arrow left-arrow">←</button>
-              <img id="image" src="/client/assets/download.jpeg" alt="Image">
+              <img id="image" src="/assets/download.jpeg" alt="Image">
               <button class="arrow right-arrow">→</button>
             </div>
         <p id="image-description">A booming economic city in the heart of Cintra. This region is famous for bringing the conceptual design of Florin to life.</p>
@@ -119,7 +103,7 @@
             <h2>The history of Nilfgaard</h2>
             <div class="image-section">
               <button class="arrow left-arrow">←</button>
-              <img id="image" src="/client/assets/download.jpeg" alt="Image">
+              <img id="image" src="/assets/download.jpeg" alt="Image">
               <button class="arrow right-arrow">→</button>
             </div>
         <p id="image-description">This place is fukkkkin magical</p>
@@ -127,9 +111,11 @@
     </section>
   </div>
   
-    <img id="building"src="/client/assets/building.png" alt="building" class="icon" />
-    <img id ="war" src="/client/assets/war.png" alt="war" class="icon" />
-     <img id = "woods" src="/client/assets/woods.png" alt="woods" class="icon" />
+
+    <img id="building"src="/assets/building.png" alt="building" class="icon" />
+    <img id ="war" src="/assets/war.png" alt="war" class="icon" />
+    <img id = "woods" src="/assets/woods.png" alt="woods" class="icon" />
+
 
     
 

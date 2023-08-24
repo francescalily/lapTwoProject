@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./assets/css/global-styles.css">
-    <link rel="stylesheet" href="./assets/css/homepage.css">
-    <script defer src="./assets/js/"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.
+    <script defer type="text/javascript" src="assets/js/isLogged.js"></script>
+    <link rel="stylesheet" href="assets/css/global-styles.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
     <title>Homepage</title>
 </head>
 <body>
@@ -20,9 +19,12 @@
                     <li><a id="community-button" href="/discussion" class="nav-spacing">Community Board</a></li>
                 </ul>
             </div>
-         <div id="nav-right-buttons" class="center-vertical">
-                <a class="button nav-spacing-right"><button>Login</button></a>
-                <a class="button nav-spacing-right"><button>Sign-up</button></a>
+            <div id="login-btn" class="nav-right-buttons center-vertical">
+                <a href="/login" class="button nav-spacing-right"><button>Login</button></a>
+            </div>
+            <div id="logged-in" class="nav-right-buttons center-vertical hidden">
+                <a id="logout-btn" class="button nav-spacing-right"><button>Logout</button></a>
+                <a id="profile-btn" class="button nav-spacing-right"><button>Profile</button></a>
             </div>
         </nav>
     <section class="cover-container">

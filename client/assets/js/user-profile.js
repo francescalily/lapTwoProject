@@ -66,5 +66,11 @@ expandSection.addEventListener("click", function () {
     }
 });
 
+async function check() {
+    if(await checkToken() !== true) {
+        window.location.assign("/");
+    }
+}
 
+check();
 
