@@ -53,7 +53,7 @@ function openHistory() {
   divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
   divBox.style.overflow = "scroll";
 
-  allPosts.forEacdch((postElem) => {
+  allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "history") {
       divBox.appendChild(postElem.cloneNode(true));
     }
@@ -188,7 +188,7 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   const topic = form.get("topic");
   const postContent = form.get("post");
 
-  const userId = localStorage.getItem("userId"); // assuming you save userId in local storage upon login
+  const userId = localStorage.getItem("userId");
   const postData = {
     user_id: userId,
     topic: topic,
