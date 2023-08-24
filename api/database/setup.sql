@@ -39,7 +39,3 @@ CREATE TABLE discussion (
     FOREIGN KEY (user_id) REFERENCES user_account (user_id),
     PRIMARY KEY (discussion_id)
 );
-
-
-
-
