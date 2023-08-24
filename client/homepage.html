@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./assets/css/global-styles.css">
-    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.
+    <script defer type="text/javascript" src="assets/js/isLogged.js"></script>
+    <link rel="stylesheet" href="assets/css/global-styles.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
     <title>Homepage</title>
 </head>
 <body>
@@ -14,14 +14,17 @@
             </div>
             <div id="nav-center" class="center-vertical center-horizontal">
                 <ul class="nav-links">
-                    <li><a id="home-button" href="./homepage.html" class="nav-spacing">Home</a></li>
-                    <li><a id="history-button" href="./history.html" class="nav-spacing">History</a></li>
-                    <li><a id="community-button" href="./discussion.html" class="nav-spacing">Community Board</a></li>
+                    <li><a id="home-button" href="/" class="nav-spacing">Home</a></li>
+                    <li><a id="history-button" href="/history" class="nav-spacing">History</a></li>
+                    <li><a id="community-button" href="/discussion" class="nav-spacing">Community Board</a></li>
                 </ul>
             </div>
-         <div id="nav-right-buttons" class="center-vertical">
-                <a class="button nav-spacing-right"><button>Login</button></a>
-                <a class="button nav-spacing-right"><button>Sign-up</button></a>
+            <div id="login-btn" class="nav-right-buttons center-vertical">
+                <a href="/login" class="button nav-spacing-right"><button>Login</button></a>
+            </div>
+            <div id="logged-in" class="nav-right-buttons center-vertical hidden">
+                <a id="logout-btn" class="button nav-spacing-right"><button>Logout</button></a>
+                <a id="profile-btn" class="button nav-spacing-right"><button>Profile</button></a>
             </div>
         </nav>
     <section class="cover-container">
@@ -37,8 +40,8 @@
                 <a href="#slide-3"></a>
             </div>
             <div class="welcome">
-                <h2>Welcome</h2>
-                <h2>to</h2>
+                <h2 class="welcome-wel">Welcome</h2>
+                <h2 class="welcome-to">to</h2>
                 <h1>Florin</h1>
             </div>
         </div>
@@ -108,7 +111,7 @@
                 <!-- pages overlay     -->
                 <div class="overlay">
                     <h2>History & Culture</h2>
-                    <h3></h3>
+                    <h3>Click to discover more about our beautiful county</h3>
                 </div>
             </div>
             <div class="pages-box">
@@ -119,7 +122,7 @@
                 <!-- overlay -->
                 <div class="overlay">
                     <h2>Community</h2>
-                    <h3></h3>
+                    <h3>Want to see current discussions in our community? Click to see what's going on </h3>
                 </div>                    
             </div>
             <div class="pages-box">
@@ -130,7 +133,7 @@
                 <!-- overlay -->
                 <div class="overlay">
                     <h2>Account</h2>
-                    <h3></h3>
+                    <h3>Are you a member of our community or would like to join? Click here to find out more</h3>
                 </div>
             </div>
         </div>

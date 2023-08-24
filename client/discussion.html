@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Board</title>
     <link rel="stylesheet" href="./assets/css/discussion.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/global-styles.css">
+    <script defer type="text/javascript" src="assets/js/isLogged.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
     <script defer src="./assets/js/discussion.js"></script>
   </head>
@@ -15,14 +17,17 @@
             </div>
             <div id="nav-center" class="center-vertical center-horizontal">
                 <ul class="nav-links">
-                    <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
-                    <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
-                    <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
+                  <li><a id="home-button" href="/" class="nav-spacing">Home</a></li>
+                  <li><a id="history-button" href="/history" class="nav-spacing">History</a></li>
+                  <li><a id="community-button" href="/discussion" class="nav-spacing">Community Board</a></li>
                 </ul>
             </div>
-         <div id="nav-right-buttons" class="center-vertical">
-                <a class="button nav-spacing-right"><button>Login</button></a>
-                <a class="button nav-spacing-right"><button>Sign-up</button></a>
+            <div id="login-btn" class="nav-right-buttons center-vertical">
+              <a href="/login" class="button nav-spacing-right"><button>Login</button></a>
+            </div>
+            <div id="logged-in" class="nav-right-buttons center-vertical hidden">
+                <a id="logout-btn" class="button nav-spacing-right"><button>Logout</button></a>
+                <a id="profile-btn" class="button nav-spacing-right"><button>Profile</button></a>
             </div>
         </nav>
        
@@ -72,7 +77,7 @@
      </div>
    
      </div>
-     <div id="posts" style="display: none;"></div>
+     <div id="posts" style="display: block;"></div>
 
      
 </html>

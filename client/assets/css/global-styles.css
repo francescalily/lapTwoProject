@@ -7,6 +7,10 @@ html, body {
     background-color: #e1d9cf;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .login-container {
     position: absolute;
     top: 50%;
@@ -130,7 +134,7 @@ nav {
     white-space: nowrap;
 }
 
-#nav-right-buttons {
+.nav-right-buttons {
     display: flex;
     justify-items: flex-end;
     width: 40%;

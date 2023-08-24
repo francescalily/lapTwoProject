@@ -13,6 +13,10 @@ body {
   background-color: #e1d9cf;
 }
 
+header {
+  height: 50px;
+}
+
 .login-container {
   position: absolute;
   top: 50%;
@@ -209,7 +213,7 @@ button:hover {
 }
 
 h1 {
-  color: blcakred;
+  color: black;
   margin: 20px;
 }
 
@@ -258,6 +262,22 @@ h2 {
   margin-top: 15px;
   text-align: center;
   justify-content: center;
+}
+
+#craftsBtn {
+  background-color: #fa3235;
+}
+
+#recyclingBtn {
+  background-color: #4bfa7b;
+}
+
+#historyBtn {
+  background-color: #fad964;
+}
+
+#libraryBtn {
+  background-color: #3e51fa;
 }
 
 .grid-item {

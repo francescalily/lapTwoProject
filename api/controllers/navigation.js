@@ -3,23 +3,23 @@ const path = require("path");
 const project_dir = path.join(__dirname, "../../client/");
 
 function homepage (req, res) {
-    res.sendFile(project_dir + 'homepage.html');
+    res.status(200).sendFile(project_dir + 'homepage.html');
 }
 
 function login (req, res) {
-    res.sendFile(project_dir + 'login.html');
+    res.status(200).sendFile(project_dir + 'login.html');
 }
 
 function profile (req, res) {
-    res.sendFile(project_dir + 'user-profile.html');
+    res.status(200).sendFile(project_dir + 'user-profile.html');
 }
 
 function history (req, res) {
-    res.sendFile(project_dir + 'history.html');
+    res.status(200).sendFile(project_dir + 'history.html');
 }
 
 function discussion (req, res) {
-    res.sendFile(project_dir + 'discussion.html');
+    res.status(200).sendFile(project_dir + 'discussion.html');
 }
 
 module.exports = {
