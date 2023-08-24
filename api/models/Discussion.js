@@ -1,11 +1,11 @@
 const db = require("../database/connect");
 
-class Community {
-  constructor({ post_id, username, topic, post, votes }) {
-    this.id = post_id;
+class Discussion {
+  constructor({ discussion_id, username, topic, content, votes }) {
+    this.id = discussion_id;
     this.username = username;
     this.topic = topic;
-    this.post = post;
+    this.content = content;
     this.votes = votes;
   }
 
@@ -19,45 +19,47 @@ class Community {
     );
     */
     const response = await db.query(
-      `SELECT * FROM community`
+      `SELECT * FROM discussion`
     );
     if (response.rows.length === 0) {
-      throw new Error("No posts available");
+      throw new Error("No discussions available");
     }
-    return response.rows.map((g) => new Community(g));
+    return response.rows.map((g) => new Discussion(g));
   }
 
   static async getOneById(id) {
+    console.log(id);
     const response = await db.query(
-      "SELECT * FROM community WHERE post_id = $1;",
+      "SELECT * FROM discussion WHERE discussion_id = $1;",
       [id]
     );
     if (response.rows.length != 1) {
-      throw new Error("Unable to locate post.");
+      throw new Error("Unable to locate discussion.");
     }
-    return new Community(response.rows[0]);
+    return new Discussion(response.rows[0]);
   }
 
-  static async getTopPost() {
+  static async getTopDiscussion() {
     const response = await db.query(
-      "SELECT * FROM community ORDER BY votes DESC LIMIT 1;"
+      "SELECT * FROM discussion ORDER BY votes DESC LIMIT 1;"
     );
     if (response.rows.length != 1) {
-      throw new Error("Unable to locate top voted post.");
+      throw new Error("Unable to locate top voted discussion.");
     }
-    return new Community(response.rows[0]);
+    return new Discussion(response.rows[0]);
   }
 
   static async create(data) {
-    const { topic, post, username, user_id } = data;
+    const { topic, content, username, user_id } = data;
     console.log("usenamamam", username);
     console.log("useridddd", user_id);
     const response = await db.query(
-      "INSERT INTO community (username, topic, post) VALUES ($1, $2, $3) RETURNING post_id;",
-      [username, topic, post]
+      "INSERT INTO discussion (username, topic, content) VALUES ($1, $2, $3) RETURNING discussion_id;",
+      [username, topic, content]
     );
-    const newId = response.rows[0].post_id;
-    const newPost = await Community.getOneById(newId);
+    console.log("response", response.rows[0])
+    const newId = response.rows[0].discussion_id;
+    const newDiscussion = await Discussion.getOneById(newId);
     /*
     const response = await db.query(
       `SELECT community.*, user_account.username 
@@ -66,30 +68,31 @@ class Community {
          WHERE community.user_id = $1;`,
       [user_id]
     ); */
-    return response.rows[0];
+    //return response.rows[0];
+    return newDiscussion;
   }
 
   async update(data) {
     const response = await db.query(
-      "UPDATE community SET votes = votes + $1 WHERE user_id = $2 RETURNING user_id, votes;",
+      "UPDATE discussion SET votes = votes + $1 WHERE user_id = $2 RETURNING user_id, votes;",
       [this.votes + parseInt(data.votes), this.id]
     );
     if (response.rows.length != 1) {
       throw new Error("Unable to update votes.");
     }
-    return new Community(response.rows[0]);
+    return new Discussion(response.rows[0]);
   }
 
   async destroy() {
     const response = await db.query(
-      "DELETE FROM community WHERE user_id = $1 RETURNING *;",
+      "DELETE FROM discussion WHERE user_id = $1 RETURNING *;",
       [this.id]
     );
     if (response.rows.length != 1) {
-      throw new Error("Unable to delete post.");
+      throw new Error("Unable to delete discussion.");
     }
-    return new Community(response.rows[0]);
+    return new Discussion(response.rows[0]);
   }
 }
 
-module.exports = Community;
+module.exports = Discussion;

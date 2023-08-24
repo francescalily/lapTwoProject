@@ -1,10 +1,10 @@
-const Community = require("../models/Community");
+const Discussion = require("../models/Discussion");
 const jwt = require("jsonwebtoken");
 
 async function index(req, res) {
   try {
-    const community = await Community.getAll();
-    res.status(200).json(community);
+    const discussion = await Discussion.getAll();
+    res.status(200).json(discussion);
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
@@ -13,8 +13,8 @@ async function index(req, res) {
 async function show(req, res) {
   try {
     const id = parseInt(req.params.id);
-    const community = await Community.getOneById(id);
-    res.status(200).json(community);
+    const discussion = await Discussion.getOneById(id);
+    res.status(200).json(discussion);
   } catch (err) {
     res.status(404).json({ err: err.message });
   }
@@ -28,12 +28,12 @@ async function create(req, res) {
   console.log(decoded.id)
   console.log(decoded.username)
   try {
-    const { topic, post } = req.body;
+    const { topic, content } = req.body;
     const user_id = decoded.id;
     const username = decoded.username;
-    const data = { topic, post, username, user_id };
-    const community = await Community.create(data);
-    res.status(200).json({ community: community });
+    const data = { topic, content, username, user_id };
+    const discussion = await Discussion.create(data);
+    res.status(200).json({ discussion: discussion });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -57,8 +57,8 @@ async function update(req, res) {
   try {
     const id = parseInt(req.params.id);
     const data = req.body;
-    const community = await Community.getOneById(id);
-    const result = await community.update(data);
+    const discussion = await Discussion.getOneById(id);
+    const result = await discussion.update(data);
     res.status(200).json(result);
   } catch (err) {
     res.status(404).json({ err: err.message });
@@ -67,8 +67,8 @@ async function update(req, res) {
 
 async function getTop(req, res) {
   try {
-    const community = await Community.getTopPost();
-    res.status(200).json({ community: community });
+    const discussion = await Discussion.getTopDiscussion();
+    res.status(200).json({ discussion: discussion });
   } catch (err) {
     res.status(404).json({ err: err.message });
   }
@@ -77,8 +77,8 @@ async function getTop(req, res) {
 async function destroy(req, res) {
   try {
     const id = parseInt(req.params.id);
-    const community = await Community.getOneById(id);
-    const result = await community.destroy();
+    const discussion = await Discussion.getOneById(id);
+    const result = await discussion.destroy();
     res.json(result);
   } catch (err) {
     res.status(404).json({ err: err.message });

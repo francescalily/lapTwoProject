@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS book;
 
-DROP TABLE IF EXISTS community;
+DROP TABLE IF EXISTS discussion;
 DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE book (
@@ -29,15 +29,15 @@ CREATE TABLE user_account (
 );
 
 
-CREATE TABLE community (
-    post_id INT GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE discussion (
+    discussion_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT,
     username VARCHAR(30) NOT NULL,
     topic VARCHAR(50) NOT NULL,
-    post VARCHAR(300) NOT NULL,
+    content VARCHAR(300) NOT NULL,
     votes INT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user_account (user_id),
-    PRIMARY KEY (post_id)
+    PRIMARY KEY (discussion_id)
 );
 
 
