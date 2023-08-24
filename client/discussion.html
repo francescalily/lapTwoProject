@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discussion Board</title>
+    <link rel="stylesheet" href="./assets/css/discussion.css" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <script defer src="./assets/js/discussion.js"></script>
+  </head>
+  <body>
+    <header>
+        <nav class = "default-bg">
+            <div id="nav-left-buttons" class="center-vertical">
+            </div>
+            <div id="nav-center" class="center-vertical center-horizontal">
+                <ul class="nav-links">
+                    <li><a id="home-button" href="#" class="nav-spacing">Home</a></li>
+                    <li><a id="history-button" href="#" class="nav-spacing">History</a></li>
+                    <li><a id="community-button" href="#" class="nav-spacing">Community Board</a></li>
+                </ul>
+            </div>
+         <div id="nav-right-buttons" class="center-vertical">
+                <a class="button nav-spacing-right"><button>Login</button></a>
+                <a class="button nav-spacing-right"><button>Sign-up</button></a>
+            </div>
+        </nav>
+       
+    </header>
+    <h1>Community Board</h1>
+
+    <div class="grid-container">
+      <!-- <div class="popUp"></div> -->
+     <!-- <div class="grid-item" id="ideas">IDEAS</div> -->
+     <div class="grid-item" id="ideas">
+      <form id="post-form">
+        <!-- <fieldset>
+        <label for="title">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </fieldset> -->
+      <fieldset>
+        <label for="title">Topic:</label>
+        <select id="topic" name="topic">
+        <option value="library">Library</option>
+      <option value="crafts">Crafts</option>
+      <option value="recycling">Recycling</option>
+      <option value="history">History</option>
+    </select>
+      </fieldset>
+      <fieldset>
+        <label for="title">Post:</label>
+        <textarea id="post" name="post" required></textarea>
+      </fieldset>
+      <input type="submit" value="Post">
+     </form>
+     </div>
+     <div class="grid-item" id="library">
+   <button id="libraryBtn">Library</button>
+   <div class="library-posts"></div>
+</div>
+     <div class="grid-item" id="recycling">
+   <button id="recyclingBtn">Recycling</button>
+   <div class="recycling-posts"></div>
+</div>
+     <div class="grid-item" id="crafts"> 
+      <button id="craftsBtn">Crafts</button>
+      <div class="crafts-posts"></div>
+     </div>
+     <div class="grid-item" id="history">
+      <button id="historyBtn">History</button>
+      <div class="history-posts"></div>
+     </div>
+   
+     </div>
+     <div id="posts" style="display: none;"></div>
+
+     
+</html>

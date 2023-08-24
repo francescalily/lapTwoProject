@@ -1,0 +1,199 @@
+g {
+    border: 2px solid brown;
+}
+.svg-container {
+    padding-top: 100px;
+    position: relative;
+    height: 650px;
+    width: 700px;
+}
+
+#svg3 {
+    transition: transform 0.2s ease-in-out;
+        cursor:pointer;
+
+}
+#svg3:hover {
+    transform: scale(1.12) translateY(-35px) translateX(-45px)
+}
+
+
+#svg2 {
+    transition: transform 0.2s ease-in-out;
+    cursor:pointer;
+
+}
+#svg2:hover {
+    transform: scale(1.12) translateY(3px) translateX(20px)
+}
+
+#svg1 {
+    transition: transform 0.2s ease-in-out;
+    cursor:pointer;
+}
+
+#svg1:hover {
+    transform-origin: left-center;
+    transform: scale(1.12) translateY(10px) translateX(-40px)
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+
+}
+
+#svg-section {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    transform: translate(660px, 50px);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.svg-container {
+    /* position: relative; */
+    transition: transform 0.3s, top ease 0.5s;
+    transition: margin-left 0.3s;
+    width: 700px;
+    height: 500px;
+}
+
+.left {
+    margin-left: -30%;
+    height: 800px;
+    margin-bottom: 20px;
+}
+
+
+.new{
+    -webkit-transform: scale(1);
+    -webkit-transition:.3s;
+    transform: scale(1);
+    transition:.3s;
+    align-self: center;
+    transition: ease 0.3s;
+}
+
+.new:hover{
+    fill: aqua;
+    -webkit-transform: scale(1.5);
+  
+    -webkit-transition:.3s;
+    transform: scale(1.5);
+    transition:.3s;
+    
+    cursor:pointer;
+}
+
+
+.drawer-right {
+    right: -60vw;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.drawer-right {
+    border-radius: 5px;
+    background-color: #ddffd9;
+    right: -60vw;
+    width: 60vw;
+    height: 100%;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s cubic-bezier(.97, .1, .18, .99), opacity 0.3s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drawer-right--close {
+    /* Existing properties */
+    transition: right 0.3s cubic-bezier(.97, .1, .18, .99), opacity 0.3s;
+}
+
+.open {
+    opacity: 1;
+    right: 0;
+    pointer-events: auto;
+}
+
+.hidden {
+    opacity: 0;
+    display: none;
+}
+
+.drawer-content {
+    margin-left: 20px;
+}
+image-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .story-section {
+    display: inline;
+  }
+  .left-arrow {
+    margin-right: 16px;
+    color: black;
+  }
+  
+  .right-arrow {
+    margin-left: 16px;
+    color: black;
+
+  }
+  #building {
+    display:none;
+    height: 40px;
+    transform: translate(350px, 10px);
+  }
+  #storySection {
+    opacity: 1;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .redHidden {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  @keyframes flashAnimation {
+    0% {
+      fill: red; /* Starting color */
+    }
+    50% {
+      fill: yellow; /* Flashing color */
+    }
+    100% {
+        fill: red;
+    }
+  }
+  @keyframes flushAnimation {
+    0%,
+    10%,
+    100% {
+      width: 0
+    }
+    70%,
+    90% {
+        fill: aqua;
+        width: 100%;
+    }
+   
+  }

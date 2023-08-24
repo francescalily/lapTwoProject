@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e1d9cf;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Poppins", sans-serif;
+  max-width: 430px;
+  width: 100%;
+  background: rgba(18, 77, 84, 1);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.login-container .register {
+  display: none;
+}
+
+#check:checked ~ .register {
+  display: block;
+}
+
+#check:checked ~ .login {
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.login-container .form {
+  padding: 2rem;
+}
+
+.form input {
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  font-size: 17px;
+  margin-bottom: 1.3rem;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form input.login-btn {
+  background-color: rgba(249, 116, 75, 1);
+  color: rgb(228, 221, 214);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form input.login-btn:hover {
+  background-color: rgba(249, 116, 75, 0.8);
+  color: white;
+}
+
+.form h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: rgb(228, 221, 214);
+}
+
+.signup {
+  font-size: 17px;
+  text-align: center;
+  color: white;
+}
+
+.signup label {
+  color: #009579;
+  cursor: pointer;
+}
+
+#title {
+  margin: 0;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* li {
+    list-style-type: none;
+} */
+
+nav {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+#nav-left-buttons {
+  display: flex;
+  justify-items: flex-start;
+  width: 40%;
+  height: 100%;
+}
+
+#nav-center {
+  display: flex;
+  justify-items: center;
+  width: 20%;
+  height: 100%;
+  justify-content: space-around;
+  white-space: nowrap;
+}
+
+#nav-right-buttons {
+  display: flex;
+  justify-items: flex-end;
+  width: 40%;
+  height: 100%;
+  flex-direction: row-reverse;
+  margin: 0 50px 0 50px;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: rgba(225, 217, 207, 1);
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: white;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(249, 116, 75, 1);
+  height: 3px;
+  width: 0%;
+  left: 0;
+  bottom: -5px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover:after {
+  width: 100%;
+}
+
+button {
+  padding: 9px 25px;
+  background-color: rgba(249, 116, 75, 1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(249, 116, 75, 0.8);
+}
+
+.default-bg {
+  background-color: rgba(18, 77, 84, 1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.center-horizontal {
+  justify-content: center;
+}
+
+.nav-spacing {
+  margin: 60px;
+}
+
+.nav-spacing-right {
+  margin: 20px;
+}
+
+.center-vertical {
+  align-items: center;
+}
+
+h1 {
+  color: blcakred;
+  margin: 20px;
+}
+
+.post {
+  font-size: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 700px;
+  background-color: rgba(18, 77, 84, 1);
+  padding: 10px;
+  margin: 20px;
+}
+
+#ideas {
+  cursor: auto;
+}
+
+.grid-item > #post-form {
+  display: block;
+  font-size: 22px;
+  margin-top: 100px;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
+#topic,
+#post {
+  width: 50%;
+  margin-left: 50px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+#libraryBtn,
+#historyBtn,
+#craftsBtn,
+#recyclingBtn {
+  width: auto;
+  height: 120px;
+  font-size: 30px;
+  margin-top: 15px;
+  text-align: center;
+  justify-content: center;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+
+  margin: 20px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#ideas {
+  grid-row: 1 / span 2;
+}
+
+.fullScreen {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
