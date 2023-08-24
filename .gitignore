@@ -3,6 +3,3 @@ node_modules
 build
 dist
 .env
-
-/api/node_modules/
-/api/node_modules
