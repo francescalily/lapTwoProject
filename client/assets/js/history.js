@@ -55,7 +55,7 @@ svg1.addEventListener("click", function () {
         setTimeout(() => { openDrawer(svg1); }, 200);
         activeSVG = svg1;
         svg.classList.add("left");
-        svg1.style.cssText = "transform: scale(1.55);  transition: transform 0.7s ease; fill: red;";
+        svg1.style.cssText = "transform: scale(1.25);  transition: transform 0.7s ease; fill: red;";
         svg2.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
         svg3.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
         arrow.style.display = "none";
@@ -244,6 +244,12 @@ redFinish.addEventListener("click", () => {
     svg1.style.cssText = "";
     svg2.style.cssText = "";
     svg3.style.cssText = "";
+    red2.style.cssText = "opacity:0";
+    redSprings.style.cssText = "opacity: 0";
+    redWater.style.cssText = "opacity: 0";
+    redania.style.cssText = "opacity: 0";
+    storySection.style.cssText = "opacity:1";
+    redFinish.style.cssText = "opacity:0";
     svg.classList.remove("left");
 })
 
