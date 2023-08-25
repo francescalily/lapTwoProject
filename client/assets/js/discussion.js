@@ -29,13 +29,36 @@ function createPostElement(data) {
   username.textContent = data["username"];
   post.appendChild(username);
 
-  const header = document.createElement("h2");
+  const header = document.createElement("h3");
   header.textContent = data["topic"];
+
+  // header.style.border = "solid black 2px";
+  header.style.display = "none";
+
   post.appendChild(header);
 
   const content = document.createElement("p");
-  content.textContent = data["post"];
+  console.log(data)
+  content.textContent = data["content"];
   post.appendChild(content);
+
+  content.style.display = "block";
+
+  const voteCount = document.createElement("span");
+  voteCount.className = "vote-count";
+  voteCount.textContent = data["votes"] || 0;
+  post.appendChild(voteCount);
+
+  const voteButton = document.createElement("button");
+  voteButton.textContent = "upvote";
+  voteButton.addEventListener("click", async () => {
+    const newVoteCount = await handleVote(data["id"]);
+    console.log(data["id"]);
+    console.log(newVoteCount);
+    voteCount.textContent = newVoteCount;
+    console.log(newVoteCount);
+  });
+  post.appendChild(voteButton);
 
   return post;
 }
@@ -44,7 +67,7 @@ function openHistory() {
   const divBox = document.createElement("div");
   divBox.style.width = "90%";
   divBox.style.height = "700px";
-  divBox.style.backgroundColor = "lightgray";
+  divBox.style.backgroundColor = "#F2F8F9";
   divBox.style.position = "fixed";
   divBox.style.top = "50%";
   divBox.style.left = "50%";
@@ -53,9 +76,17 @@ function openHistory() {
   divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
   divBox.style.overflow = "scroll";
 
-  allPosts.forEacdch((postElem) => {
+  allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "history") {
-      divBox.appendChild(postElem.cloneNode(true));
+      const postWrapper = document.createElement("div");
+      postWrapper.style.borderBottom = "dotted";
+      postWrapper.style.marginBottom = "10px";
+      postWrapper.style.padding = "10px";
+
+      const clonedPost = postElem.cloneNode(true);
+      postWrapper.appendChild(clonedPost);
+
+      divBox.appendChild(postWrapper);
     }
   });
 
@@ -79,7 +110,7 @@ function openRecycling() {
   const divBox = document.createElement("div");
   divBox.style.width = "90%";
   divBox.style.height = "700px";
-  divBox.style.backgroundColor = "lightgray";
+  divBox.style.backgroundColor = "#F2F8F9";
   divBox.style.position = "fixed";
   divBox.style.top = "50%";
   divBox.style.left = "50%";
@@ -90,7 +121,15 @@ function openRecycling() {
 
   allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "recycling") {
-      divBox.appendChild(postElem.cloneNode(true));
+      const postWrapper = document.createElement("div");
+      postWrapper.style.borderBottom = "dotted";
+      postWrapper.style.marginBottom = "10px";
+      postWrapper.style.padding = "10px";
+
+      const clonedPost = postElem.cloneNode(true);
+      postWrapper.appendChild(clonedPost);
+
+      divBox.appendChild(postWrapper);
     }
   });
 
@@ -114,7 +153,7 @@ function openCrafts() {
   const divBox = document.createElement("div");
   divBox.style.width = "90%";
   divBox.style.height = "700px";
-  divBox.style.backgroundColor = "lightgray";
+  divBox.style.backgroundColor = "#F2F8F9";
   divBox.style.position = "fixed";
   divBox.style.top = "50%";
   divBox.style.left = "50%";
@@ -125,7 +164,15 @@ function openCrafts() {
 
   allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "crafts") {
-      divBox.appendChild(postElem.cloneNode(true));
+      const postWrapper = document.createElement("div");
+      postWrapper.style.borderBottom = "dotted";
+      postWrapper.style.marginBottom = "10px";
+      postWrapper.style.padding = "10px";
+
+      const clonedPost = postElem.cloneNode(true);
+      postWrapper.appendChild(clonedPost);
+
+      divBox.appendChild(postWrapper);
     }
   });
 
@@ -149,7 +196,7 @@ function openLibrary() {
   const divBox = document.createElement("div");
   divBox.style.width = "90%";
   divBox.style.height = "700px";
-  divBox.style.backgroundColor = "lightgray";
+  divBox.style.backgroundColor = "#F2F8F9";
   divBox.style.position = "fixed";
   divBox.style.top = "50%";
   divBox.style.left = "50%";
@@ -157,10 +204,19 @@ function openLibrary() {
   divBox.style.padding = "20px";
   divBox.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
   divBox.style.overflow = "scroll";
+  divBox.style.border = "solid 2px black";
 
   allPosts.forEach((postElem) => {
     if (postElem.getAttribute("data-topic") === "library") {
-      divBox.appendChild(postElem.cloneNode(true));
+      const postWrapper = document.createElement("div");
+      postWrapper.style.borderBottom = "dotted";
+      postWrapper.style.marginBottom = "10px";
+      postWrapper.style.padding = "10px";
+
+      const clonedPost = postElem.cloneNode(true);
+      postWrapper.appendChild(clonedPost);
+
+      divBox.appendChild(postWrapper);
     }
   });
 
@@ -184,26 +240,27 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
-  //const username = form.get("username");
   const topic = form.get("topic");
   const postContent = form.get("post");
 
+  //const userId = localStorage.getItem("userId");
   const postData = {
-    //username: username,
     topic: topic,
-    post: postContent,
+    content: postContent,
   };
-
+  tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: tempToken
     },
     body: JSON.stringify(postData),
   };
 
-  const result = await fetch("http://localhost:3000/community", options);
+  const result = await fetch("http://127.0.0.1:3000/discussions", options);
+  console.log(result);
   const responseData = await result.json();
   console.log(responseData);
 
@@ -219,13 +276,16 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 });
 
 async function loadPosts() {
+  console.log(localStorage)
+  //delete this tempToken
+  tempToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
     headers: {
-      Authorization: localStorage.getItem("token"),
+      Authorization: tempToken,
     },
   };
 
-  const response = await fetch("http://localhost:3000/community", options);
+  const response = await fetch("http://127.0.0.1:3000/discussions");
 
   if (response.status == 200) {
     const posts = await response.json();
@@ -238,117 +298,28 @@ async function loadPosts() {
       container.appendChild(elem);
     });
   } else {
-    window.location.assign("./discussion.html");
+    console.log("Error loading the page");
   }
 }
 
 loadPosts();
 
-//let container;
-// switch (p.topic) {
-//   case "library":
-//     container = document.querySelector(".library-posts");
-//     break;
-//   case "recycling":
-//     container = document.querySelector(".recycling-posts");
-//     break;
-//   case "knowledge":
-//     container = document.querySelector(".knowledge-posts");
-//   case "history":
-//     container = document.querySelector(".history-posts");
-
-//   default:
-//     container = document.
-//need to add username - join sql table with valentin user_account table so that username appears with post
-//need to display posts (front-end)- right now can see the posts as soon as pressing post - need to make a toggle so is hidden until button is pressed
-//(backend) need to make sure that data is stored correctly and is secure
-
-// function fullScreen() {
-//   let fullScreenBox = document.createElement("div");
-//   fullScreenBox.classList.add("fullScreenBox");
-//   document.body.appendChild(fullScreenBox);
-
-//   fullScreenBox.addEventListener("click", removeFullScreen);
-//   gridContainer.appendChild(fullScreenBox);
-// }
-
-// gridItems.forEach((item) => {
-//   item.addEventListener("click", fullScreen);
-// });
-
-// let overlay = document.createElement("div");
-// overlay.className = "overlay";
-// document.body.appendChild(overlay);
-
-// gridItems.forEach((item) => {
-//   item.addEventListener("click", openSection);
-// });
-
-// overlay.addEventListener("click", closeAllSections);
-
-// function openSection(event) {
-//   const clickedItem = event.currentTarget;
-
-//   if (!clickedItem.classList.contains("active")) {
-//     // Reset other items
-//     gridItems.forEach((item) => {
-//       item.style.transform = "";
-//       item.style.zIndex = "";
-//       item.style.transition = "";
-//       item.classList.remove("active");
-//     });
-
-//     // Calculate the scale factor based on the ratio of gridContainer width to clickedItem width
-//     const scaleFactor = gridContainer.offsetWidth / clickedItem.offsetWidth;
-
-//     clickedItem.style.transform = `scale(${scaleFactor}) translate(-50%, -50%)`;
-//     clickedItem.style.position = "fixed";
-//     clickedItem.style.top = "50%";
-//     clickedItem.style.left = "50%";
-//     clickedItem.style.zIndex = "10";
-//     clickedItem.style.transition = "transform 0.5s";
-//     clickedItem.classList.add("active");
-
-//     overlay.style.display = "block";
-//   } else {
-//     closeAllSections();
-//   }
-// }
-
-// function closeAllSections() {
-//   gridItems.forEach((item) => {
-//     item.style.transform = "";
-//     item.style.position = "";
-//     item.style.top = "";
-//     item.style.left = "";
-//     item.style.zIndex = "";
-//     item.style.transition = "";
-//     item.classList.remove("active");
-//   });
-
-//   overlay.style.display = "none";
-// }
-
-//p5 circles idea
-// function setup() {
-//   // Sets the screen to be 720 pixels wide and 400 pixels high
-//   let canvas = createCanvas(600, 600);
-//   canvas.parent("canvasForHTML");
-//   background(0);
-//   noStroke();
-// }
-
-// function draw() {
-//   drawCircle(width / 2, 280, 6);
-// }
-
-// function drawCircle(x, radius, level) {
-//   const tt = (150 * level) / 4.0;
-//   fill(tt);
-//   ellipse(x, height / 2, radius * 2, radius * 2);
-//   if (level > 1) {
-//     level = level - 2;
-//     drawCircle(x - radius / 2, radius / 2, level);
-//     drawCircle(x + radius / 2, radius / 2, level);
-//   }
-// }
+async function handleVote(user_id) {
+  const response = await fetch(`discussion/${user_id}`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      // Authorization: localStorage.getItem("token"),
+    },
+  });
+  console.log(response);
+  if (response.status == 200) {
+    const updatedPost = await response.json();
+    console.log(updatedPost);
+    return updatedPost["votes"];
+  } else {
+    console.error("Failed to vote");
+    return -1; // Or any other error handling logic
+  }
+}

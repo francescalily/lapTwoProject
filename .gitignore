@@ -4,5 +4,3 @@ build
 dist
 .env
 coverage
-/api/node_modules/
-/api/node_modules

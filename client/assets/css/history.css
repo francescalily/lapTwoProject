@@ -1,11 +1,24 @@
-g {
-    border: 2px solid brown;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+ 
+#image {
+    width: 500px;
+    height: 350px;
+    border-radius: 3px;
+    border: solid 1px #52b547;
+    box-shadow: inset;
 }
 .svg-container {
-    padding-top: 100px;
     position: relative;
     height: 650px;
     width: 700px;
+}
+h1 {
+    transform: translate(20px);
+    font-family: Poppins, sans-serif;
 }
 
 #svg3 {
@@ -37,22 +50,21 @@ g {
     transform: scale(1.12) translateY(10px) translateX(-40px)
 }
 
-
-h1 {
-    text-align: center;
-    font-size: 50px;
-
+#title {
+    font-weight: bold;
+    color: black;
+    font-size: 45px;
 }
 
 #svg-section {
+    margin-top: 50px;
     position: absolute;
     justify-content: center;
     align-items: center;
     transform: translate(660px, 50px);
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+
 }
 
 .svg-container {
@@ -111,6 +123,12 @@ h1 {
     overflow-y: auto;
     overflow-x: hidden;
 }
+#cTitle {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .drawer-right--close {
     /* Existing properties */
@@ -131,14 +149,47 @@ h1 {
 .drawer-content {
     margin-left: 20px;
 }
-image-section {
+.image-section {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+video {
+    width: 300px;
+    border:solid 1px #52b547;
+    border-radius: 3px;
+}
+#content-svg1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+   /* Add a semi-transparent background */
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+  }
+  #content-svg2 {
+    padding: 50px 20px;
+  }
+  #flood {
+    width: 150px;
+    height: 250px;
+  }
+
+  #image-description {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
   
   .arrow {
+    /* transform: translateY(-150px); */
     background-color: transparent;
     border: none;
     font-size: 24px;
@@ -159,9 +210,20 @@ image-section {
 
   }
   #building {
-    display:none;
+    display:none; 
     height: 40px;
-    transform: translate(350px, 10px);
+    transform: translate(520px, 650px);
+  }
+
+  #war {
+    display: none;
+    height: 40px;
+    transform: translate(570px, 580px);
+  }
+  #woods {
+    display: none;
+    height: 40px;
+    transform: translate(530px, 510px);
   }
   #storySection {
     opacity: 1;
@@ -172,6 +234,23 @@ image-section {
     opacity: 0;
     transform: scale(0.8);
   }
+#redFinish {
+    opacity:0;
+}
+
+#content-svg3 {
+    align-items: center;
+    text-align: center;
+    justify-content:center;
+    padding: 100px 20px;
+   
+}
+#nilf {
+    border:solid 1px #52b547;
+    border-radius: 3px;
+    height: 400px;
+    width: 500px;
+}
   
   @keyframes flashAnimation {
     0% {
@@ -184,16 +263,33 @@ image-section {
         fill: red;
     }
   }
+
   @keyframes flushAnimation {
-    0%,
-    10%,
-    100% {
-      width: 0
+    from {
+      height: 0;
     }
-    70%,
-    90% {
+    to {
         fill: aqua;
-        width: 100%;
+        height: 100%;
     }
    
   }
+
+  @keyframes gradient-fill-animation {
+    from {
+        fill: aqua;
+        height:0;
+    }
+    to {
+      fill: url(#gradient1); /* Gradient color */
+      height: 100;
+
+    }
+  }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  
