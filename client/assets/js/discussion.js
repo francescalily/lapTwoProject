@@ -24,14 +24,15 @@ function createPostElement(data) {
   post.className = "post";
   post.setAttribute("data-topic", data["topic"]);
 
-  const username = document.createElement("h2");
-  username.textContent = data["username"];
+  const username = document.createElement("h3");
+  username.textContent = data["username"] + ' :';
+  username.style.textDecoration = "underline";
   post.appendChild(username);
+username.style.color = "grey";
+  
 
   const header = document.createElement("h3");
   header.textContent = data["topic"];
-
-  // header.style.border = "solid black 2px";
   header.style.display = "none";
 
   post.appendChild(header);
@@ -42,14 +43,28 @@ function createPostElement(data) {
   post.appendChild(content);
 
   content.style.display = "block";
+  content.style.color = "black";
 
   const voteCount = document.createElement("span");
   voteCount.className = "vote-count";
   voteCount.textContent = data["votes"] || 0;
+ 
+  voteCount.style.fontSize = "15px"
+  voteCount.style.position = "sticky";
+  // voteCount.style.left = "87%";
+  // voteCount.style.marginBottom = "60px";
+  
+ 
   post.appendChild(voteCount);
 
   const voteButton = document.createElement("button");
   voteButton.textContent = "upvote";
+  // voteButton.style.marginLeft = "50px"; 
+  // voteButton.style.marginLeft = "50px"; 
+  voteButton.style.position = "fixed";
+  voteButton.style.backgroundColor = "#009579";
+  voteButton.style.left = "90%";  
+  voteButton.style.fontSize= "10px";  
   voteButton.setAttribute("value", data["id"]);
   voteButton.addEventListener("click", async (e) => {
     const newVoteCount = await handleVote(e.target.value);
