@@ -34,7 +34,7 @@ expandSection.addEventListener("click", function () {
         }, 400);
 
         // Add classes for expanding
-        mainContent.style.height = "1500px";
+        mainContent.style.height = "2500px";
         container.classList.add("onExpand-container");
         postLabels[0].classList.add("onExpand-postLabel");
         postBoxes[0].classList.add("onExpand-boxes");
@@ -74,13 +74,64 @@ async function check() {
 
 check();
 
-async function fetchCreatedDiscussions() {
-    try {
-        const response = await fetch('https://florin-council-jtgy.onrender.com/discussions/users/7'); // Replace with your API endpoint for fetching created posts
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching created posts:', error);
-        return [];
+function fetchCreatedDiscussions() {
+    const userToken = localStorage.getItem("token");
+    
+    if (userToken) {
+        const payload = userToken.split('.')[1]; // Extract the payload part
+        const decodedPayload = JSON.parse(atob(payload)); // Decode and parse the payload
+        const username = decodedPayload.username; // Access the username
+        console.log(username)
+      // Use the username in your fetch options
+    const options = {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${userToken}`
+        },
+    };
+      // Fetch discussions using the username
+    fetch(`/discussions/users/${username}`, options)
+        .then(response => response.json())
+        .then(oneDiscussion => {
+            console.log(oneDiscussion);
+          // Handle the fetched discussion data
+            const createdPostsContainer = document.getElementById("created-posts");
+
+          // Clear any previous posts
+            createdPostsContainer.innerHTML = "";
+            oneDiscussion.forEach(discussion => {
+                const postElement = createDiscussionElement(discussion);
+                createdPostsContainer.appendChild(postElement);
+            });
+        })
+        .catch(error => {
+            console.error("Failed to get discussions:", error);
+        });
+    } else {
+        console.error("Token not found in local storage.");
     }
 }
+
+function createDiscussionElement(discussion) {
+    const postDiv = document.createElement("div");
+    postDiv.classList.add("post");
+
+    const topicDiv = document.createElement("div");
+    topicDiv.classList.add("topic");
+    topicDiv.textContent = discussion.topic;
+
+    const contentP = document.createElement("p");
+    contentP.textContent = discussion.content;
+
+    postDiv.appendChild(topicDiv);
+    postDiv.appendChild(contentP);
+
+    return postDiv;
+}
+
+window.onload = () => {
+    fetchCreatedDiscussions();
+}
+
