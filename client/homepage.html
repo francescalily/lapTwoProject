@@ -28,15 +28,24 @@
     <section class="cover-container">
         <div class="slider-wrapper">
             <div class="slider">
-                <img id="slide-1" src="./assets/bridge.jpg" alt="scenic bridge">
+                <img  class="first" id="slide-1" src="./assets/bridge.jpg" alt="scenic bridge">
                 <img id="slide-2" src="./assets/poppy.jpg" alt="scenic poppy">
                 <img id="slide-3" src="./assets/rainbow.jpg" alt="scenic rainbow">
+            
             </div>
             <div class="slider-nav">
-                <a href="#slide-1"></a>
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <!-- <a href="#slide-1"></a>
                 <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
+                <a href="#slide-3"></a> -->
             </div>
+            
             <div class="welcome">
                 <h2 id="welcome-txt" class="welcome-wel">Welcome</h2>
                 <h2 id="welcome-to" class="welcome-to">to</h2>
@@ -107,10 +116,12 @@
                     <img src="./assets/statue-sq.jpg" alt="statue of history">
                 </div>
                 <!-- pages overlay     -->
+                <a href="/history">
                 <div class="overlay">
                     <h2>History & Culture</h2>
                     <h3>Click to discover more about our beautiful county</h3>
                 </div>
+                </a>
             </div>
             <div class="pages-box">
                 <!-- pages img -->
@@ -118,10 +129,12 @@
                     <img src="./assets/community-sq.jpg" alt="Community board">
                 </div>
                 <!-- overlay -->
+                <a href="/discussion">
                 <div class="overlay">
                     <h2>Community</h2>
                     <h3>Want to see current discussions in our community? Click to see what's going on </h3>
-                </div>                    
+                </div>     
+                </a>               
             </div>
             <div class="pages-box">
                 <!-- pages img -->
@@ -129,10 +142,12 @@
                     <img src="./assets/account-sq.jpg" alt="Account page">
                 </div>
                 <!-- overlay -->
+                <a href="/profile">
                 <div class="overlay">
-                    <h2>Account</h2>
-                    <h3>Are you a member of our community or would like to join? Click here to find out more</h3>
+                        <h2>Account</h2>
+                        <h3>Are you a member of our community or would like to join? Click here to find out more</h3>
                 </div>
+                </a> 
             </div>
         </div>
     </section>
