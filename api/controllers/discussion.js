@@ -21,7 +21,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.token);
+  console.log("create request: ",req);
   const decoded = jwt.verify(req.token, process.env.TOKEN_KEY);
   //let userId = decoded.user.user_id
   console.log(decoded)

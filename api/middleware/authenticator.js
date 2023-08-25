@@ -11,25 +11,28 @@ const verifyToken = (req, res, next) => {
       } else {
 
         try {
-          console.log(proces.env.TOKEN_KEY)
+          console.log("my env logs: ",process.env.TOKEN_KEY)
           const user_token = jwt.verify(token, process.env.TOKEN_KEY);
+          console.log("user token", user_token)
           req.user = user_token;
 
         } catch (err) {
-          return res.redirect('/login');
+          //return res.redirect('/login');
+          console.log(err);
         }
     
         next()
       }
 
     } catch (err) {
-      return res.redirect('/login');
+      //return res.redirect('/login');
+      console.log(err);
     }
   };
-*/
+  */
+
 const verifyToken = (req, res, next) => {
   const bearerHeader = req.headers["authorization"];
-  console.log("token: ", bearerHeader);
   if (typeof bearerHeader !== "undefined") {
     const bearerToken = bearerHeader.split(" ")[1];
     req.token = bearerToken;

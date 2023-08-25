@@ -243,26 +243,23 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   const topic = form.get("topic");
   const postContent = form.get("post");
 
-  //const userId = localStorage.getItem("userId");
   const postData = {
     topic: topic,
     content: postContent,
   };
-  tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
+  const userToken = localStorage.getItem("token");
+
   const options = {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
-      Authorization: tempToken
+      "authorization": `Bearer ${userToken}`
     },
     body: JSON.stringify(postData),
   };
-
-  const result = await fetch("http://127.0.0.1:3000/discussions", options);
-  console.log(result);
+  const result = await fetch("/discussions", options);
   const responseData = await result.json();
-  console.log(responseData);
 
   if ((result.status = 201)) {
     const newPostElem = createPostElement(responseData);
@@ -276,7 +273,6 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 });
 
 async function loadPosts() {
-  console.log(localStorage)
   //delete this tempToken
   tempToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
@@ -285,7 +281,7 @@ async function loadPosts() {
     },
   };
 
-  const response = await fetch("http://127.0.0.1:3000/discussions");
+  const response = await fetch("/discussions");
 
   if (response.status == 200) {
     const posts = await response.json();
@@ -305,7 +301,7 @@ async function loadPosts() {
 loadPosts();
 
 async function handleVote(user_id) {
-  const response = await fetch(`discussion/${user_id}`, {
+  const response = await fetch(`discussions/${user_id}`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
@@ -313,7 +309,6 @@ async function handleVote(user_id) {
       // Authorization: localStorage.getItem("token"),
     },
   });
-  console.log(response);
   if (response.status == 200) {
     const updatedPost = await response.json();
     console.log(updatedPost);
