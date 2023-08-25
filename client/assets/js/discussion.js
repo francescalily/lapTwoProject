@@ -38,8 +38,11 @@ function createPostElement(data) {
   post.appendChild(header);
 
   const content = document.createElement("p");
-  content.textContent = data["post"];
+  console.log(data)
+  content.textContent = data["content"];
   post.appendChild(content);
+
+  content.style.display = "block";
 
   const voteCount = document.createElement("span");
   voteCount.className = "vote-count";
@@ -237,27 +240,27 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
-  const id = form.get("id");
   const topic = form.get("topic");
-  const postContent = form.get("content");
+  const postContent = form.get("post");
 
   //const userId = localStorage.getItem("userId");
   const postData = {
-    id: id,
     topic: topic,
     content: postContent,
   };
-
+  tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: tempToken
     },
     body: JSON.stringify(postData),
   };
 
-  const result = await fetch("/discussion", options);
+  const result = await fetch("http://127.0.0.1:3000/discussions", options);
+  console.log(result);
   const responseData = await result.json();
   console.log(responseData);
 
@@ -273,13 +276,16 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 });
 
 async function loadPosts() {
+  console.log(localStorage)
+  //delete this tempToken
+  tempToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
     headers: {
-      Authorization: localStorage.getItem("token"),
+      Authorization: tempToken,
     },
   };
 
-  const response = await fetch("discussion", options);
+  const response = await fetch("http://127.0.0.1:3000/discussions");
 
   if (response.status == 200) {
     const posts = await response.json();

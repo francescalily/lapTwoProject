@@ -29,7 +29,7 @@ const verifyToken = (req, res, next) => {
 */
 const verifyToken = (req, res, next) => {
   const bearerHeader = req.headers["authorization"];
-
+  console.log("token: ", bearerHeader);
   if (typeof bearerHeader !== "undefined") {
     const bearerToken = bearerHeader.split(" ")[1];
     req.token = bearerToken;
@@ -37,8 +37,24 @@ const verifyToken = (req, res, next) => {
   } else {
     res.sendStatus(403);
   }
-
-  
 }
-  
-  module.exports = verifyToken;
+
+/*
+function verifyToken(req, res, next) {
+  const token = req.header('Authorization'); // Assuming the token is sent in the Authorization header
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token missing' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, secretKey);
+    req.user = decoded; // Attach the decoded user data to the request
+    next(); // Move to the next middleware
+  } catch (error) {
+    return res.status(403).json({ message: 'Invalid token' });
+  }
+}*/
+
+
+module.exports = verifyToken;
