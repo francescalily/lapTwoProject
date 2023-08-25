@@ -243,16 +243,12 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   const topic = form.get("topic");
   const postContent = form.get("post");
 
-  //const userId = localStorage.getItem("userId");
   const postData = {
     topic: topic,
     content: postContent,
   };
-  //tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const userToken = localStorage.getItem("token");
-  console.log(localStorage)
-  console.log(userToken)
-  console.log("postdata: ", postData)
+
   const options = {
     method: "POST",
     headers: {
@@ -262,11 +258,8 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
     },
     body: JSON.stringify(postData),
   };
-  console.log(options.headers)
   const result = await fetch("/discussions", options);
-  console.log(result);
   const responseData = await result.json();
-  console.log(responseData);
 
   if ((result.status = 201)) {
     const newPostElem = createPostElement(responseData);
@@ -280,7 +273,6 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 });
 
 async function loadPosts() {
-  console.log(localStorage)
   //delete this tempToken
   tempToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
   const options = {
@@ -317,7 +309,6 @@ async function handleVote(user_id) {
       // Authorization: localStorage.getItem("token"),
     },
   });
-  console.log(response);
   if (response.status == 200) {
     const updatedPost = await response.json();
     console.log(updatedPost);
