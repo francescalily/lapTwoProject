@@ -1,6 +1,9 @@
-g {
-    border: 2px solid brown;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Poppins&family=Raleway:wght@300;400&family=Roboto:wght@500&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
 }
+ 
 #image {
     width: 500px;
     height: 350px;
@@ -9,10 +12,13 @@ g {
     box-shadow: inset;
 }
 .svg-container {
-    padding-top: 100px;
     position: relative;
     height: 650px;
     width: 700px;
+}
+h1 {
+    transform: translate(20px);
+    font-family: Poppins, sans-serif;
 }
 
 #svg3 {
@@ -44,22 +50,21 @@ g {
     transform: scale(1.12) translateY(10px) translateX(-40px)
 }
 
-
-h1 {
-    text-align: center;
-    font-size: 50px;
-
+#title {
+    font-weight: bold;
+    color: black;
+    font-size: 45px;
 }
 
 #svg-section {
+    margin-top: 50px;
     position: absolute;
     justify-content: center;
     align-items: center;
     transform: translate(660px, 50px);
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+
 }
 
 .svg-container {
@@ -152,25 +157,29 @@ h1 {
   }
 video {
     width: 300px;
+    border:solid 1px #52b547;
+    border-radius: 3px;
 }
-.overlay-content {
+#content-svg1 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Add a semi-transparent background */
-    color: white;
+   /* Add a semi-transparent background */
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
-    z-index: 0; /* Ensure the content is displayed above other elements */
+    padding-top: 30px;
   }
   #content-svg2 {
     padding: 50px 20px;
+  }
+  #flood {
+    width: 150px;
+    height: 250px;
   }
 
   #image-description {
@@ -203,18 +212,18 @@ video {
   #building {
     display:none; 
     height: 40px;
-    transform: translate(520px, 500px);
+    transform: translate(520px, 650px);
   }
 
   #war {
     display: none;
     height: 40px;
-    transform: translate(550px, 420px);
+    transform: translate(570px, 580px);
   }
   #woods {
     display: none;
     height: 40px;
-    transform: translate(530px, 330px);
+    transform: translate(530px, 510px);
   }
   #storySection {
     opacity: 1;
@@ -225,7 +234,9 @@ video {
     opacity: 0;
     transform: scale(0.8);
   }
-
+#redFinish {
+    opacity:0;
+}
   
   @keyframes flashAnimation {
     0% {
@@ -261,3 +272,18 @@ video {
 
     }
   }
+#clickMe {
+    font-weight: bold;
+    animation: fadeIn 8s;
+    transform: rotate(30deg) translate(115px,460px);
+}
+.layer {
+    animation: fadeIn 8s;
+    transform: translate(-200px,550px)
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  
