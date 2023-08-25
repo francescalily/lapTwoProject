@@ -53,12 +53,10 @@ async function create(req, res) {
   */
 }
 
-async function update(req, res) {
+async function updateVotes(req, res) {
   try {
     const id = parseInt(req.params.id);
-    const data = req.body;
-    const discussion = await Discussion.getOneById(id);
-    const result = await discussion.update(data);
+    const result = await Discussion.updateVotes(id);
     res.status(200).json(result);
   } catch (err) {
     res.status(404).json({ err: err.message });
@@ -99,7 +97,7 @@ module.exports = {
   index,
   show,
   create,
-  update,
+  updateVotes,
   getTop,
   destroy,
   getAllByUsername

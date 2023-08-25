@@ -72,10 +72,11 @@ class Discussion {
     return newDiscussion;
   }
 
-  async update(data) {
+  static async updateVotes(discussion_id) {
+    console.log(discussion_id)
     const response = await db.query(
-      "UPDATE discussion SET votes = votes + $1 WHERE user_id = $2 RETURNING user_id, votes;",
-      [this.votes + parseInt(data.votes), this.id]
+      "UPDATE discussion SET votes = votes + 1 WHERE discussion_id = $1 RETURNING *;",
+      [discussion_id]
     );
     if (response.rows.length != 1) {
       throw new Error("Unable to update votes.");
