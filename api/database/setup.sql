@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS book;
 
-DROP TABLE IF EXISTS community;
+DROP TABLE IF EXISTS discussion;
 DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE book (
@@ -28,28 +28,14 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
-INSERT INTO user_account
-    (username, isadmin, password)
-VALUES
-('Harry', TRUE, FALSE),
-('Helly', TRUE, FALSE);
 
-
-
-CREATE TABLE community (
-    user_id INT GENERATED ALWAYS AS IDENTITY,
-    -- username VARCHAR(30),
+CREATE TABLE discussion (
+    discussion_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT,
+    username VARCHAR(30) NOT NULL,
     topic VARCHAR(50) NOT NULL,
-    post VARCHAR(300) NOT NULL,
+    content VARCHAR(300) NOT NULL,
     votes INT DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES user_account (user_id)
+    FOREIGN KEY (user_id) REFERENCES user_account (user_id),
+    PRIMARY KEY (discussion_id)
 );
-
-INSERT INTO community
-    (topic, post, votes)
-VALUES
-('History', 'I love how the git commited team are working on the history of Florin!', 0),
-('Library', 'I think this website is the best website I have ever been on:---) I love being able to get good book reccomendations.', 0);
-
-
-
