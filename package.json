@@ -17,7 +17,9 @@
     "setup-db": "node ./api/database/setup.js",
     "test": "jest --verbose",
     "coverage": "jest --coverage",
-    "live": "live-server --port 9000"
+    "live": "live-server --port 9000",
+    "mytest": "jest .api/tests/homepage.spec.js"
+  
   },
   "author": "",
   "license": "ISC",
