@@ -13,7 +13,7 @@ discussionRouter.get("/:id", discussionController.show);
 
 discussionRouter.post("/", verifyToken, discussionController.create);
 
-discussionRouter.patch("/:id", discussionController.update);
+discussionRouter.patch("/:id", verifyToken, discussionController.updateVotes);
 
 discussionRouter.delete("/:id", discussionController.destroy);
 

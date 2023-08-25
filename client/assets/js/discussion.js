@@ -22,7 +22,6 @@ historyBtn.addEventListener("click", openHistory);
 function createPostElement(data) {
   const post = document.createElement("div");
   post.className = "post";
-
   post.setAttribute("data-topic", data["topic"]);
 
   const username = document.createElement("h2");
@@ -51,12 +50,10 @@ function createPostElement(data) {
 
   const voteButton = document.createElement("button");
   voteButton.textContent = "upvote";
-  voteButton.addEventListener("click", async () => {
-    const newVoteCount = await handleVote(data["id"]);
-    console.log(data["id"]);
-    console.log(newVoteCount);
+  voteButton.setAttribute("value", data["id"]);
+  voteButton.addEventListener("click", async (e) => {
+    const newVoteCount = await handleVote(e.target.value);
     voteCount.textContent = newVoteCount;
-    console.log(newVoteCount);
   });
   post.appendChild(voteButton);
 
@@ -84,6 +81,10 @@ function openHistory() {
       postWrapper.style.padding = "10px";
 
       const clonedPost = postElem.cloneNode(true);
+      clonedPost.querySelectorAll('button')[0].addEventListener("click", async (e) => {
+        const newVoteCount = await handleVote(e.target.value);
+        e.target.previousSibling.textContent = newVoteCount;
+      });
       postWrapper.appendChild(clonedPost);
 
       divBox.appendChild(postWrapper);
@@ -127,6 +128,10 @@ function openRecycling() {
       postWrapper.style.padding = "10px";
 
       const clonedPost = postElem.cloneNode(true);
+      clonedPost.querySelectorAll('button')[0].addEventListener("click", async (e) => {
+        const newVoteCount = await handleVote(e.target.value);
+        e.target.previousSibling.textContent = newVoteCount;
+      });
       postWrapper.appendChild(clonedPost);
 
       divBox.appendChild(postWrapper);
@@ -170,6 +175,10 @@ function openCrafts() {
       postWrapper.style.padding = "10px";
 
       const clonedPost = postElem.cloneNode(true);
+      clonedPost.querySelectorAll('button')[0].addEventListener("click", async (e) => {
+        const newVoteCount = await handleVote(e.target.value);
+        e.target.previousSibling.textContent = newVoteCount;
+      });
       postWrapper.appendChild(clonedPost);
 
       divBox.appendChild(postWrapper);
@@ -214,6 +223,10 @@ function openLibrary() {
       postWrapper.style.padding = "10px";
 
       const clonedPost = postElem.cloneNode(true);
+      clonedPost.querySelectorAll('button')[0].addEventListener("click", async (e) => {
+        const newVoteCount = await handleVote(e.target.value);
+        e.target.previousSibling.textContent = newVoteCount;
+      });
       postWrapper.appendChild(clonedPost);
 
       divBox.appendChild(postWrapper);
@@ -300,14 +313,14 @@ async function loadPosts() {
 
 loadPosts();
 
-async function handleVote(user_id) {
-  const response = await fetch(`discussions/${user_id}`, {
+async function handleVote(post_id) {
+  const response = await fetch(`/discussions/${post_id}`, {
     method: "PATCH",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
-      // Authorization: localStorage.getItem("token"),
-    },
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
   });
   if (response.status == 200) {
     const updatedPost = await response.json();
