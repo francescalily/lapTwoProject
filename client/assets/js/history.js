@@ -12,8 +12,8 @@ let drawerContent = document.querySelectorAll(".drawer-content");
 let content_svg1 = document.querySelector("#content-svg1");
 let content_svg2 = document.querySelector("#content-svg2");
 let content_svg3 = document.querySelector("#content-svg3");
-
-
+let arrow = document.querySelector(".layer")
+let clickMe = document.querySelector("#clickMe")
 
 
 function bringToFront(path) {
@@ -58,7 +58,8 @@ svg1.addEventListener("click", function () {
         svg1.style.cssText = "transform: scale(1.55);  transition: transform 0.7s ease; fill: red;";
         svg2.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
         svg3.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
-
+        arrow.style.display = "none";
+        clickMe.style.display = "none";
        
     } else {
         if (drawer.classList.contains("open")) {
@@ -92,6 +93,8 @@ svg2.addEventListener("click", function () {
         svg2.style.cssText = "transform: scale(1.55);  transition: transform 0.7s ease; fill: #ADD8E6;";
         svg1.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
         svg3.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
+        arrow.style.display = "none";
+        clickMe.style.display = "none";
     } else {
         if (drawer.classList.contains("open")) {
             closeDrawer();
@@ -120,6 +123,8 @@ svg3.addEventListener("click", function () {
         svg3.style.cssText = "transform: scale(1.75);  transition: transform 0.7s ease; fill: red;";
         svg2.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
         svg1.style.cssText = "transform: scale(0.5); transition: transform 0.7s;";
+        arrow.style.display = "none";
+        clickMe.style.display = "none";
         
     } else {
         if (drawer.classList.contains("open")) {
@@ -205,29 +210,29 @@ const redFinish = document.querySelector("#redFinish")
 
 begin.addEventListener("click", () => {
     svg1.style.animation = "flashAnimation 0.5s infinite";
-    storySection.classList.add("redHidden");
+    
     redania.classList.remove("redHidden");
-    next.style.cssText = "z-index: 20"
+    storySection.style.cssText = "opacity: 0";
+   
 })
 
 next.addEventListener("click", () => {
-    
+    console.log("next button clicked")
     svg1.style.animation = "flushAnimation 2s infinite";
-    redania.classList.add("redHidden");
     redWater.classList.remove("redHidden");
+    next.style.cssText = "opacity: 0;"
+
     
 })
 
 red2.addEventListener("click",() => {
-    
-    
     svg1.style.cssText = "animation: gradient-fill-animation; transition: transform 2s ease";
     svg2.style.cssText = "transition: transform 2s ease";
     svg3.style.cssText = "transition: transform 3s ease";
 
 
     // svg1.style.fill = document.querySelector("#gradient1")
-    redWater.classList.add("redHidden");
+    redFinish.style.cssText = "opacity: 1";
     redSprings.classList.remove("redHidden");
 })
 
