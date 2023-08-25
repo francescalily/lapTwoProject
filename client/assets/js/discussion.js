@@ -248,18 +248,22 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
     topic: topic,
     content: postContent,
   };
-  tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
+  //tempToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3ZWRpZGl0MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTI5NTA4NTAsImV4cCI6MTY5Mjk1NDQ1MH0.wfuQSzacLJGdSadBPCC84Cl5WYtlrrYXjVbQF5nToxY"
+  const userToken = localStorage.getItem("token");
+  console.log(localStorage)
+  console.log(userToken)
+  console.log("postdata: ", postData)
   const options = {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
-      Authorization: tempToken
+      "authorization": `Bearer ${userToken}`
     },
     body: JSON.stringify(postData),
   };
-
-  const result = await fetch("http://127.0.0.1:3000/discussions", options);
+  console.log(options.headers)
+  const result = await fetch("/discussions", options);
   console.log(result);
   const responseData = await result.json();
   console.log(responseData);
@@ -285,7 +289,7 @@ async function loadPosts() {
     },
   };
 
-  const response = await fetch("http://127.0.0.1:3000/discussions");
+  const response = await fetch("/discussions");
 
   if (response.status == 200) {
     const posts = await response.json();
@@ -305,7 +309,7 @@ async function loadPosts() {
 loadPosts();
 
 async function handleVote(user_id) {
-  const response = await fetch(`discussion/${user_id}`, {
+  const response = await fetch(`discussions/${user_id}`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
